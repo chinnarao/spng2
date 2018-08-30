@@ -23,5 +23,31 @@
   <mdc-icon>edit</mdc-icon>
 </button>
 <span>----------------------------------------------------------</span>
-
+<div class="flexDemoContainer">
+  <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex>
+    <div fxFlex> I'm above on mobile, and left on larger devices. </div>
+    <div fxFlex> I'm below on mobile, and right on larger devices. </div>
+  </div>
+</div>
+<span>----------------------------------------------------------</span>
+<div class="bounds">
+    
+  <div class="content" 
+       fxLayout="row" 
+       fxLayout.xs="column" 
+       fxFlexFill >
+       
+      <div fxFlex="15" class="sec1" fxFlex.xs="55">
+          first-section
+      </div>
+      <div fxFlex="30" class="sec2" >
+          second-section
+      </div>
+      <div fxFlex="55" class="sec3" fxFlex.xs="15">
+          third-section
+      </div>
+      
+  </div>
+  
+</div>
 <router-outlet></router-outlet>

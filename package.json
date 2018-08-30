@@ -13,9 +13,11 @@
   "dependencies": {
     "@angular-mdc/web": "^0.38.2",
     "@angular/animations": "^6.1.0",
+    "@angular/cdk": "^6.4.6",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
+    "@angular/flex-layout": "github:angular/flex-layout-builds",
     "@angular/forms": "^6.1.0",
     "@angular/http": "^6.1.0",
     "@angular/platform-browser": "^6.1.0",

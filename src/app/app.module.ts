@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MdcButtonModule, MdcFabModule, MdcIconModule, } from '@angular-mdc/web';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MdcButtonModule, MdcFabModule, MdcIconModule, } from '@angular-mdc/web'
     MdcButtonModule,
     MdcFabModule,
     MdcIconModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
