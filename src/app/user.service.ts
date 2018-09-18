@@ -1,10 +1,10 @@
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import { Observable, of as observableOf } from 'rxjs';
 import { logging } from 'protractor';
 import { map, switchMap } from 'rxjs/operators';
 import { auth } from 'firebase';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 // Building A User Authentication Service with Angular and Firebase : 'stephen fluin'
 // https://www.youtube.com/watch?v=mfONkAj4x94
