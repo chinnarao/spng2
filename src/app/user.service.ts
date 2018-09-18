@@ -6,7 +6,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { auth } from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 
-// Building A User Authentication Service with Angular and Firebase : stephen fluin
+// Building A User Authentication Service with Angular and Firebase : 'stephen fluin'
 // https://www.youtube.com/watch?v=mfONkAj4x94
 
 @Injectable({
@@ -33,7 +33,8 @@ export class UserService {
     );
     constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) {}
     login() {
-        this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+        // this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+        this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider());
     }
     logout() {
         this.afAuth.auth.signOut();
