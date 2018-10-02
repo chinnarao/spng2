@@ -10,7 +10,21 @@
     <br/>
     <button (click)="user.login()">goto second page</button>
 </ng-template> -->
-Home Page
+<!-- Home Page
 <button [routerLink]="['/main']">go to main</button>
 <button [routerLink]="['/page']">go to second page</button>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+
+
+<div fxFlexFill fxLayout="column">
+    <header style="display : flex; height : 100px; background-color: #fffbda;">Using Flex-Layout with Router-Outlets</header>
+    
+    <div class="content" fxFlex style="background-color : #ffc4c4;"> content </div>
+    <router-outlet></router-outlet>
+    
+    <footer style="display : flex; height : 100px; background-color: #fffbda;">
+      <div class="version">
+        Using @angular/flex-layout (current HEAD on Github Master)
+      </div>
+    </footer>
+  </div>

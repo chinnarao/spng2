@@ -7,7 +7,7 @@ import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
 
 import { MdcButtonModule, MdcFabModule, MdcIconModule, } from '@angular-mdc/web';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import {FlexLayoutModule, BREAKPOINTS} from '@angular/flex-layout';
 
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -18,6 +18,7 @@ import {AuthMethods, AuthProvider, AuthProviderWithCustomConfig,
 
 import * as firebase from 'firebase/app';
 import * as firebaseui from 'firebaseui';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -49,9 +50,67 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM
 };
 
+export const appBreakPoints: any[] = [
+  {
+      alias: 'xs',
+      suffix: 'Xs',
+      overlapping: false,
+      mediaQuery: 'screen and (max-width: 767px)'
+  },
+  {
+      alias: 'gt-xs',
+      suffix: 'GtXs',
+      overlapping: false,
+      mediaQuery: 'screen and (min-width: 768px)'
+  },
+  {
+      alias: 'sm',
+      suffix: 'Sm',
+      overlapping: false,
+      mediaQuery: 'screen and (max-width: 767px)'
+  },
+  {
+      alias: 'gt-sm',
+      suffix: 'GtSm',
+      overlapping: false,
+      mediaQuery: 'screen and (min-width: 768px)'
+  },
+  {
+      alias: 'md',
+      suffix: 'Md',
+      overlapping: false,
+      mediaQuery: 'screen and (min-width: 768px) and (max-width: 1023px)'
+  },
+  {
+      alias: 'gt-md',
+      suffix: 'GtMd',
+      overlapping: false,
+      mediaQuery: 'screen and (min-width: 1024px)'
+  },
+  {
+      alias: 'lg',
+      suffix: 'Lg',
+      overlapping: false,
+      mediaQuery: 'screen and (min-width: 1024px)'
+  },
+  {
+      alias: 'gt-lg',
+      suffix: 'GtLg',
+      overlapping: false,
+      mediaQuery: 'screen and (min-width: 1024px)'
+  },
+  {
+      alias: 'xl',
+      suffix: 'Xl',
+      overlapping: false,
+      mediaQuery: 'screen and (min-width: 1024px)'
+  }
+]
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +126,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireDatabaseModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
-  providers: [],
+  providers: [{ provide: BREAKPOINTS, useValue: appBreakPoints }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

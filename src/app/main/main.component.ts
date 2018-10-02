@@ -11,15 +11,24 @@ import {FirebaseUISignInFailure} from 'firebaseui-angular';
 export class MainComponent implements OnInit {
 
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private angularFireAuth: AngularFireAuth) {
   }
 
   ngOnInit(): void {
-    this.afAuth.authState.subscribe(d => console.log(d));
+    this.angularFireAuth.authState.subscribe(this.firebaseAuthChangeListener);
+  }
+
+  private firebaseAuthChangeListener(response) {
+    // if needed, do a redirect in here
+    if (response) {
+      console.log('Logged in :)');
+    } else {
+      console.log('Logged out :(');
+    }
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.angularFireAuth.auth.signOut();
   }
 
   successCallback(data: FirebaseUISignInSuccessWithAuthResult) {
