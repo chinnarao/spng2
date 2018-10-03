@@ -16,14 +16,53 @@
 <router-outlet></router-outlet> -->
 
 
-<div fxFlexFill fxLayout="column">
-    <header style="display : flex; height : 100px; background-color: #fffbda;">Using Flex-Layout with Router-Outlets</header>
+<div fxLayout="column">
+    <header style="height : 100px; background-color: #fffbda;">
+        <div>Using Flex-Layout with Router-Outlets</div>
+    </header>
     
-    <div class="content" fxFlex style="background-color : #ffc4c4;"> content </div>
-    <router-outlet></router-outlet>
+    <!-- <div class="mSection">
+      <div fxLayout="row" fxFlexFill fxLayout.lt-lg="column">
+          <div fxFlex="15" class="lmSection" >   
+              fxHide.lt-lg
+              first-section
+          </div>
+          <div fxFlex class="mmSection">
+              second-section
+          </div>
+          <div fxFlex="15" class="rmSection" fxHide.lt-lg>
+              third-section
+          </div>
+      </div>
+    </div> -->
+    <!-- <router-outlet></router-outlet> -->
+
+    <!-- <div fxLayout="row" fxLayout.xs="column" fxFlex class="mSection">
+        <nav fxFlex="20" fxFlexOrder fxFlexOrder.xs="2" style="background-color: red; min-height: 700px;">
+            
+        </nav>
+        <article fxFlex="60" fxFlexOrder fxFlexOrder.xs="1" style="background-color: red; min-height: 700px;">
+            <div class="mmSection"></div>
+        </article>
+        <aside fxFlex="20" fxFlexOrder fxFlexOrder.xs="3" style="background-color: red; min-height: 700px;">
+            <div class="rmSection"></div>
+        </aside>
+    </div> -->
+
+    <div fxLayout="row" fxLayout.xs="column" class="mSection">
+            <nav fxFlex="15" fxFlexOrder.xs="2" class="lmSection">
+                <div>advertisement</div>
+            </nav>
+            <article fxFlex="70" fxFlexOrder.xs="1" class="mmSection">
+                    <div>content</div>
+            </article>
+            <aside fxFlex="15" fxFlexOrder.xs="3" class="rmSection">
+                    <div>advertisement</div>
+            </aside>
+        </div>
     
-    <footer style="display : flex; height : 100px; background-color: #fffbda;">
-      <div class="version">
+    <footer style="height : 100px; background-color:lightgray;">
+      <div>
         Using @angular/flex-layout (current HEAD on Github Master)
       </div>
     </footer>

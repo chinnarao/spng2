@@ -7,7 +7,7 @@ import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
 
 import { MdcButtonModule, MdcFabModule, MdcIconModule, } from '@angular-mdc/web';
-import {FlexLayoutModule, BREAKPOINTS} from '@angular/flex-layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -50,63 +50,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM
 };
 
-export const appBreakPoints: any[] = [
-  {
-      alias: 'xs',
-      suffix: 'Xs',
-      overlapping: false,
-      mediaQuery: 'screen and (max-width: 767px)'
-  },
-  {
-      alias: 'gt-xs',
-      suffix: 'GtXs',
-      overlapping: false,
-      mediaQuery: 'screen and (min-width: 768px)'
-  },
-  {
-      alias: 'sm',
-      suffix: 'Sm',
-      overlapping: false,
-      mediaQuery: 'screen and (max-width: 767px)'
-  },
-  {
-      alias: 'gt-sm',
-      suffix: 'GtSm',
-      overlapping: false,
-      mediaQuery: 'screen and (min-width: 768px)'
-  },
-  {
-      alias: 'md',
-      suffix: 'Md',
-      overlapping: false,
-      mediaQuery: 'screen and (min-width: 768px) and (max-width: 1023px)'
-  },
-  {
-      alias: 'gt-md',
-      suffix: 'GtMd',
-      overlapping: false,
-      mediaQuery: 'screen and (min-width: 1024px)'
-  },
-  {
-      alias: 'lg',
-      suffix: 'Lg',
-      overlapping: false,
-      mediaQuery: 'screen and (min-width: 1024px)'
-  },
-  {
-      alias: 'gt-lg',
-      suffix: 'GtLg',
-      overlapping: false,
-      mediaQuery: 'screen and (min-width: 1024px)'
-  },
-  {
-      alias: 'xl',
-      suffix: 'Xl',
-      overlapping: false,
-      mediaQuery: 'screen and (min-width: 1024px)'
-  }
-]
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -126,7 +69,7 @@ export const appBreakPoints: any[] = [
     AngularFireDatabaseModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
-  providers: [{ provide: BREAKPOINTS, useValue: appBreakPoints }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

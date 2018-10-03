@@ -5,36 +5,24 @@
     box-sizing: content-box !important;
   }
 
-
-  .bounds {
-    background-color:#ddd;
-    height :800px;
+  .mSection {
+    min-height :700px;
   }
   
-  .sec1 {
-    background: red;
+  .lmSection {
+    background: black;
     color:white;
-    text-transform: uppercase
+    text-align:center;
   }
   
-  .sec2 {
-    background: yellow;
-    color:blue;
-    
+  .mmSection {
+    text-align:center;
   }
   
-  .sec3 {
-    background: blue;
+  .rmSection {
+    background: black;
     color:white;
-    text-transform: uppercase
+    text-align:center;
   }
   
-  .sec1, .sec2, .sec3 {
-    padding-top:20px;
-    text-align:center
-  }
   
-  .content {
-    min-width: 300px;
-    /*height: 400px;*/
-  }
