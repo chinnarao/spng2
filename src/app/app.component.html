@@ -1,69 +1,95 @@
-<!-- <div *ngIf="user.uid | async as uid; else login">
-    The user is logged in.{{uid}}
-    <div *ngIf="user.isAdmin | async">The user also has ADMIN super powers.</div>
-    <button (click)="user.logout()">Logout</button>
-</div>
-<ng-template #login>
-    You need to login: <button (click)="user.login()">Login</button>
-    <br/>
-    <button (click)="user.login()">goto main page</button>
-    <br/>
-    <button (click)="user.login()">goto second page</button>
-</ng-template> -->
-<!-- Home Page
-<button [routerLink]="['/main']">go to main</button>
-<button [routerLink]="['/page']">go to second page</button>
-<router-outlet></router-outlet> -->
-
-
-<div fxLayout="column">
-    <header style="height : 100px; background-color: #fffbda;">
-        <div>Using Flex-Layout with Router-Outlets</div>
-    </header>
-    
-    <!-- <div class="mSection">
-      <div fxLayout="row" fxFlexFill fxLayout.lt-lg="column">
-          <div fxFlex="15" class="lmSection" >   
-              fxHide.lt-lg
-              first-section
-          </div>
-          <div fxFlex class="mmSection">
-              second-section
-          </div>
-          <div fxFlex="15" class="rmSection" fxHide.lt-lg>
-              third-section
-          </div>
+<mdc-top-app-bar #demoappbar [short]="true" [fixedAdjustElement]="mainContent">
+  <mdc-top-app-bar-row>
+    <mdc-top-app-bar-section align="start">
+      <a routerLink="/" style="text-decoration: none;">
+        <img src="/src/assets/img/scooppages.png" alt="logo" style="display: inline; height: 35px;">
+      </a>
+    </mdc-top-app-bar-section>
+    <mdc-top-app-bar-section align="start">
+      <button mdc-button class="mdc-button-color-sp">
+        <mdc-icon>local_offer</mdc-icon>Advertisements
+      </button>
+      <div mdcMenuSurfaceAnchor #articlesanchor>
+        <button mdc-button class="mdc-button-color-sp" (click)="articles.open = !articles.open">
+          <mdc-icon>school</mdc-icon>Articles
+        </button>
+        <mdc-menu #articles [anchor]="articlesanchor" anchorCorner="bottomStart">
+          <mdc-list>
+            <mdc-list-item>Dotnet</mdc-list-item>
+            <mdc-list-item>Java</mdc-list-item>
+            <mdc-list-item>Python</mdc-list-item>
+          </mdc-list>
+        </mdc-menu>
       </div>
-    </div> -->
-    <!-- <router-outlet></router-outlet> -->
+    </mdc-top-app-bar-section>
+    <mdc-top-app-bar-section align="start"></mdc-top-app-bar-section>
+    <mdc-top-app-bar-section align="end">
 
-    <!-- <div fxLayout="row" fxLayout.xs="column" fxFlex class="mSection">
-        <nav fxFlex="20" fxFlexOrder fxFlexOrder.xs="2" style="background-color: red; min-height: 700px;">
-            
-        </nav>
-        <article fxFlex="60" fxFlexOrder fxFlexOrder.xs="1" style="background-color: red; min-height: 700px;">
-            <div class="mmSection"></div>
-        </article>
-        <aside fxFlex="20" fxFlexOrder fxFlexOrder.xs="3" style="background-color: red; min-height: 700px;">
-            <div class="rmSection"></div>
-        </aside>
-    </div> -->
+    </mdc-top-app-bar-section>
+    <mdc-top-app-bar-section align="end">
+      <div mdcMenuSurfaceAnchor #postanchor>
+        <button mdc-button class="mdc-button-color-sp" (click)="postmenu.open = !postmenu.open">
+          Post<mdc-icon>arrow_drop_down</mdc-icon>
+        </button>
+        <mdc-menu #postmenu [anchor]="postanchor" anchorCorner="bottomStart">
+          <mdc-list>
+            <mdc-list-item>
+              <mdc-icon>local_offer</mdc-icon>Advertisement
+            </mdc-list-item>
+            <mdc-list-item>
+              <mdc-icon>school</mdc-icon>Article
+            </mdc-list-item>
+          </mdc-list>
+        </mdc-menu>
+      </div>
+      <div mdcMenuSurfaceAnchor #aboutanchor>
+        <button mdc-button class="mdc-button-color-sp" (click)="aboutmenu.open = !aboutmenu.open">
+          About<mdc-icon>arrow_drop_down</mdc-icon>
+        </button>
+        <mdc-menu #aboutmenu [anchor]="aboutanchor" anchorCorner="bottomStart" style="min-width: 240px;">
+          <mdc-list>
+            <mdc-list-item>
+              <mdc-icon>email</mdc-icon><span class="nowrap">Send Email To Site Owner</span>
+            </mdc-list-item>
+            <mdc-list-item>
+              <mdc-icon>help</mdc-icon>Help
+            </mdc-list-item>
+            <mdc-list-item>
+              <mdc-icon>security</mdc-icon>Privacy
+            </mdc-list-item>
+            <mdc-list-item>
+              <mdc-icon>info</mdc-icon>Press
+            </mdc-list-item>
+            <mdc-list-item>
+              <mdc-icon>history</mdc-icon>Our Story
+            </mdc-list-item>
 
+          </mdc-list>
+        </mdc-menu>
+      </div>
+      <button mdc-button class="mdc-button-color-sp">
+        <mdc-icon>person</mdc-icon>Sign
+      </button>
+    </mdc-top-app-bar-section>
+  </mdc-top-app-bar-row>
+</mdc-top-app-bar>
+<div #mainContent>
+  <div fxLayout="column">
     <div fxLayout="row" fxLayout.xs="column" class="mSection">
-            <nav fxFlex="15" fxFlexOrder.xs="2" class="lmSection">
-                <div>advertisement</div>
-            </nav>
-            <article fxFlex="70" fxFlexOrder.xs="1" class="mmSection">
-                    <div>content</div>
-            </article>
-            <aside fxFlex="15" fxFlexOrder.xs="3" class="rmSection">
-                    <div>advertisement</div>
-            </aside>
-        </div>
-    
-    <footer style="height : 100px; background-color:lightgray;">
-      <div>
-        Using @angular/flex-layout (current HEAD on Github Master)
-      </div>
-    </footer>
+      <nav fxFlex="15" fxFlexOrder.xs="2" class="lmSection">
+        <div>advertisement</div>
+      </nav>
+      <article fxFlex="70" fxFlexOrder.xs="1" class="mmSection">
+        <div>content1<br />content2<br />content3<br />content4<br />content5<br />content6<br />content7<br />content8<br />content9<br /></div>
+      </article>
+      <aside fxFlex="15" fxFlexOrder.xs="3" class="rmSection">
+        <div>advertisement</div>
+      </aside>
+    </div>
   </div>
+</div>
+<footer style="height : 100px; background-color:lightgray;">
+  <div>
+    Using @angular/flex-layout (current HEAD on Github Master)
+  </div>
+</footer>

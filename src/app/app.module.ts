@@ -1,12 +1,12 @@
 import { HttpModule } from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
 
-import { MdcButtonModule, MdcFabModule, MdcIconModule, } from '@angular-mdc/web';
+import { AppMaterialModule } from './material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
 import {AngularFireModule} from '@angular/fire';
@@ -58,11 +58,9 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MdcButtonModule,
-    MdcFabModule,
-    MdcIconModule,
+    AppMaterialModule,
     FlexLayoutModule,
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
     HttpModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
