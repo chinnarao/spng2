@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild  } from '@angular/core';
 import {ObservableMedia, MediaChange} from '@angular/flex-layout';
 import {Subscription} from 'rxjs/Subscription';
 // import {filter} from 'rxjs/operators/filter';
@@ -14,6 +14,8 @@ export class AppComponent implements OnDestroy {
   watcher: Subscription;
   activeMediaQuery = '';
 
+  //@ViewChild('headerSearchBar') headerSearchBar; 
+
   constructor(media: ObservableMedia, user: UserService) {
     this.watcher = media.subscribe((change: MediaChange) => {
       this.activeMediaQuery = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : '';
@@ -22,6 +24,7 @@ export class AppComponent implements OnDestroy {
       }
     });
     // media.asObservable().pipe(filter((change: MediaChange) => change.mqAlias === 'xs')).subscribe(() => this.loadMobileContent() );
+    
   }
 
   loadMobileContent() { /* .... */ }

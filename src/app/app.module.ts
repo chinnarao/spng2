@@ -16,6 +16,8 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AuthMethods, AuthProvider, AuthProviderWithCustomConfig,
   CredentialHelper, FirebaseUIAuthConfig, FirebaseUIModule} from 'firebaseui-angular';
 
+import { NgMatSearchBarModule } from 'ng-mat-search-bar';
+
 import * as firebase from 'firebase/app';
 import * as firebaseui from 'firebaseui';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -65,7 +67,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    NgMatSearchBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
