@@ -14,7 +14,7 @@ export class AppComponent implements OnDestroy {
   watcher: Subscription;
   activeMediaQuery = '';
 
-  //@ViewChild('headerSearchBar') headerSearchBar; 
+  // @ViewChild('headerSearchBar') headerSearchBar;
 
   constructor(media: ObservableMedia, user: UserService) {
     this.watcher = media.subscribe((change: MediaChange) => {
