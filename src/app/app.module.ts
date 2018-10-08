@@ -21,6 +21,9 @@ import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 import * as firebase from 'firebase/app';
 import * as firebaseui from 'firebaseui';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AdModule } from './ad/ad.module';
+import { ArticleModule } from './article/article.module';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -55,7 +58,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,9 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
-    NgMatSearchBarModule
+    NgMatSearchBarModule,
+    AdModule,
+    ArticleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
