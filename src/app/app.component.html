@@ -9,12 +9,16 @@
       </a>
     </mdc-top-app-bar-section>
     <mdc-top-app-bar-section align="start">
+      
       <button mdc-button class="mdc-button-color-sp">
-        <mdc-icon>local_offer</mdc-icon>Advertisements
+        <mdc-icon>school</mdc-icon><a [routerLink]="['/article-list']">Articles</a>
       </button>
-      <div mdcMenuSurfaceAnchor #articlesanchor>
-        <button mdc-button class="mdc-button-color-sp" (click)="articles.open = !articles.open">
-          <mdc-icon>school</mdc-icon>Articles<mdc-icon>arrow_drop_down</mdc-icon>
+      <button mdc-button class="mdc-button-color-sp">
+        <mdc-icon>local_offer</mdc-icon><a [routerLink]="['/ad-list']">Advertisements</a>
+      </button>
+      <!-- <div mdcMenuSurfaceAnchor #articlesanchor>
+        <button mdc-button class="mdc-button-color-sp" (click)="articles.open = !articles.open" [routerLink]="['/article-list']">
+          <mdc-icon>school</mdc-icon><a [routerLink]="['/article-list']">Articles</a><mdc-icon>arrow_drop_down</mdc-icon>
         </button>
         <mdc-menu #articles [anchor]="articlesanchor" anchorCorner="bottomStart" style="min-width: 150px;">
           <mdc-list>
@@ -23,7 +27,7 @@
             <mdc-list-item>Python</mdc-list-item>
           </mdc-list>
         </mdc-menu>
-      </div>
+      </div> -->
     </mdc-top-app-bar-section>
     <mdc-top-app-bar-section align="start"></mdc-top-app-bar-section>
     <mdc-top-app-bar-section align="end">
@@ -73,7 +77,7 @@
     </mdc-top-app-bar-section>
   </mdc-top-app-bar-row>
 </mdc-top-app-bar>
-<div #mainContent>
+<!-- <div #mainContent>
   <div fxLayout="column">
     <div fxLayout="row" fxLayout.xs="column" class="mSection">
       <nav fxFlex="15" fxFlexOrder.xs="2" class="lmSection">
@@ -87,9 +91,12 @@
       </aside>
     </div>
   </div>
+</div> -->
+<div #mainContent style="min-height: 750px;">
+  <router-outlet></router-outlet>
 </div>
 <footer style="height : 100px; background-color:lightgray;">
   <div>
-    Using @angular/flex-layout (current HEAD on Github Master)
+    Footer
   </div>
 </footer>

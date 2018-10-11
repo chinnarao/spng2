@@ -1,14 +1,20 @@
 import { ArticleListComponent } from './article-list/article-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
-import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { ArticleCreateComponent } from './article-create/article-create.component';
+import { ArticleDeleteComponent } from './article-delete/article-delete.component';
+import { ArticleUpdateComponent } from './article-update/article-update.component';
+import { ArticleReadComponent } from './article-read/article-read.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'article-list', pathMatch: 'full' },
-  {path: 'article-list', component: ArticleListComponent},
-  {path: 'article-details/:id', component: ArticleDetailsComponent},
-  {path: '**', component: PageNotFoundComponent},
+  { path: '', component: ArticleListComponent },
+  { path: 'create', component: ArticleCreateComponent },
+  { path: 'update/:id', component: ArticleUpdateComponent },
+  { path: ':id', redirectTo: 'read/:id', pathMatch: 'full'},
+  { path: 'read/:id', component: ArticleReadComponent },
+  { path: 'delete/:id', component: ArticleDeleteComponent },
+  { path: 'article-list', redirectTo: '', pathMatch: 'full' },
+  { path: '**', component: ArticleListComponent },
 ];
 
 @NgModule({

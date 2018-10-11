@@ -22,8 +22,7 @@ import * as firebase from 'firebase/app';
 import * as firebaseui from 'firebaseui';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AdModule } from './ad/ad.module';
-import { ArticleModule } from './article/article.module';
+import { HomeComponent } from './home/home.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -59,7 +58,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   declarations: [
     AppComponent,
     NavbarComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -73,8 +73,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireDatabaseModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     NgMatSearchBarModule,
-    AdModule,
-    ArticleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
