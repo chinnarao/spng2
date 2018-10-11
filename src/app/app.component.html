@@ -1,4 +1,4 @@
-<mdc-top-app-bar #demoappbar [short]="true" [fixedAdjustElement]="mainContent">
+<mdc-top-app-bar #spappbar [short]="true" [fixedAdjustElement]="mainContent">
   <mdc-top-app-bar-row>
     <mdc-top-app-bar-section align="start">
       <a routerLink="/" style="text-decoration: none;" fxShow.lt-md="false" fxShow="true">
@@ -9,12 +9,11 @@
       </a>
     </mdc-top-app-bar-section>
     <mdc-top-app-bar-section align="start">
-      
-      <button mdc-button class="mdc-button-color-sp">
-        <mdc-icon>school</mdc-icon><a [routerLink]="['/article-list']">Articles</a>
+      <button mdc-button class="mdc-button-color-sp" [routerLink]="['/ad-list']">
+        <mdc-icon>local_offer</mdc-icon>Advertisements
       </button>
-      <button mdc-button class="mdc-button-color-sp">
-        <mdc-icon>local_offer</mdc-icon><a [routerLink]="['/ad-list']">Advertisements</a>
+      <button mdc-button class="mdc-button-color-sp" [routerLink]="['/article-list']">
+        <mdc-icon>school</mdc-icon>Articles
       </button>
       <!-- <div mdcMenuSurfaceAnchor #articlesanchor>
         <button mdc-button class="mdc-button-color-sp" (click)="articles.open = !articles.open" [routerLink]="['/article-list']">
@@ -36,13 +35,13 @@
         <button mdc-button class="mdc-button-color-sp" (click)="postmenu.open = !postmenu.open">
           <mdc-icon>note_add</mdc-icon>Post<mdc-icon>arrow_drop_down</mdc-icon>
         </button>
-        <mdc-menu #postmenu [anchor]="postanchor" anchorCorner="bottomStart">
+        <mdc-menu #postmenu [anchor]="postanchor" anchorCorner="bottomStart" style="min-width: 200px;">
           <mdc-list>
-            <mdc-list-item>
-              <mdc-icon>local_offer</mdc-icon>Advertisement
+            <mdc-list-item [routerLink]="['/ad-list/create']">
+              <mdc-icon>local_offer</mdc-icon>Add Advertisement
             </mdc-list-item>
-            <mdc-list-item>
-              <mdc-icon>school</mdc-icon>Article
+            <mdc-list-item [routerLink]="['/article-list/create']">
+              <mdc-icon>school</mdc-icon> Add Article
             </mdc-list-item>
           </mdc-list>
         </mdc-menu>
@@ -77,21 +76,6 @@
     </mdc-top-app-bar-section>
   </mdc-top-app-bar-row>
 </mdc-top-app-bar>
-<!-- <div #mainContent>
-  <div fxLayout="column">
-    <div fxLayout="row" fxLayout.xs="column" class="mSection">
-      <nav fxFlex="15" fxFlexOrder.xs="2" class="lmSection">
-        <div>advertisement</div>
-      </nav>
-      <article fxFlex="70" fxFlexOrder.xs="1" class="mmSection">
-        <div>content1<br />content2<br />content3<br />content4<br />content5<br />content6<br />content7<br />content8<br />content9<br /></div>
-      </article>
-      <aside fxFlex="15" fxFlexOrder.xs="3" class="rmSection">
-        <div>advertisement</div>
-      </aside>
-    </div>
-  </div>
-</div> -->
 <div #mainContent style="min-height: 750px;">
   <router-outlet></router-outlet>
 </div>

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 import { AdRoutingModule } from './ad-routing.module';
 import { AdCreateComponent } from './ad-create/ad-create.component';
@@ -11,7 +11,8 @@ import { AdNotFoundComponent } from './ad-not-found/ad-not-found.component';
 
 @NgModule({
   imports: [
-    AdRoutingModule
+    AdRoutingModule,
+    FlexLayoutModule,
   ],
   declarations: [AdCreateComponent, AdReadComponent, AdUpdateComponent, AdDeleteComponent, AdListComponent, AdNotFoundComponent]
 })

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 import { ArticleRoutingModule } from './article-routing.module';
 import { ArticleCreateComponent } from './article-create/article-create.component';
@@ -11,7 +11,8 @@ import { ArticleNotFoundComponent } from './article-not-found/article-not-found.
 
 @NgModule({
   imports: [
-    ArticleRoutingModule
+    ArticleRoutingModule,
+    FlexLayoutModule,
   ],
   declarations: [ArticleCreateComponent, ArticleReadComponent, ArticleUpdateComponent, ArticleDeleteComponent, ArticleListComponent,
     ArticleNotFoundComponent]
