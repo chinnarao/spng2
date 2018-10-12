@@ -70,17 +70,34 @@
           </mdc-list>
         </mdc-menu>
       </div>
-      <button mdc-button class="mdc-button-color-sp">
+      <div mdcMenuSurfaceAnchor #signanchor>
+        <button mdc-button class="mdc-button-color-sp" (click)="signmenu.open = !signmenu.open">
+          <mdc-icon>person</mdc-icon><mdc-icon>arrow_drop_down</mdc-icon>
+        </button>
+        <mdc-menu #signmenu [anchor]="signanchor" anchorCorner="bottomStart">
+          <mdc-list>
+            <mdc-list-item [routerLink]="['/auth/log-in']">
+              <mdc-icon>input</mdc-icon>Log In
+            </mdc-list-item>
+            <mdc-list-item [routerLink]="['/auth/register']">
+              <mdc-icon>person_add</mdc-icon>Register
+            </mdc-list-item>
+          </mdc-list>
+        </mdc-menu>
+      </div>
+      <!-- <button mdc-button class="mdc-button-color-sp">
         <mdc-icon>person</mdc-icon>Log In
-      </button>
+      </button> -->
     </mdc-top-app-bar-section>
   </mdc-top-app-bar-row>
 </mdc-top-app-bar>
-<div #mainContent style="min-height: 750px;">
+
+<div #mainContent style="min-height: 650px;">
+  <hr>
   <router-outlet></router-outlet>
 </div>
-<footer style="height : 100px; background-color:lightgray;">
+<footer style="height : 100px; background-color:white;">
   <div>
-    Footer
+    <hr>
   </div>
 </footer>

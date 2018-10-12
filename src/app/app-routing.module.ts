@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadChildren: './home/home.module#HomeModule' },
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
   { path: 'ad-list', loadChildren: './ad/ad.module#AdModule'},
   { path: 'article-list', loadChildren: './article/article.module#ArticleModule'},
   { path: '**', component: PageNotFoundComponent },
