@@ -1,3 +1,4 @@
+<div class="container">
 <mdc-top-app-bar #spappbar [short]="true" [fixedAdjustElement]="mainContent">
   <mdc-top-app-bar-row>
     <mdc-top-app-bar-section align="start">
@@ -85,13 +86,11 @@
           </mdc-list>
         </mdc-menu>
       </div>
-      <!-- <button mdc-button class="mdc-button-color-sp">
-        <mdc-icon>person</mdc-icon>Log In
-      </button> -->
+      <div id="google_translate_element"></div>
     </mdc-top-app-bar-section>
   </mdc-top-app-bar-row>
 </mdc-top-app-bar>
-
+</div>
 <div #mainContent style="min-height: 650px;">
   <hr>
   <router-outlet></router-outlet>
