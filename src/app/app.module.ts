@@ -22,6 +22,7 @@ import * as firebase from 'firebase/app';
 import * as firebaseui from 'firebaseui';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SharedModule } from './shared/shared.module';
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -73,6 +74,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     NgMatSearchBarModule,
     NgMatSearchBarModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
