@@ -5,7 +5,7 @@
       </nav>
       <article fxFlex="70" fxFlexOrder.xs="1">
         <div>
-          <H1>Home  new Home</H1>
+          <H1>Log In</H1>
         </div>
       </article>
       <aside fxFlex="15" fxFlexOrder.xs="3">
@@ -13,3 +13,8 @@
       </aside>
     </div>
   </div>
+
+  <firebase-ui (signInSuccessWithAuthResult)="successCallback($event)"
+             (signInFailure)="errorCallback($event)"></firebase-ui>
+
+             <!-- <button (click)="logout()">Logout</button> -->
