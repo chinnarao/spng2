@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {FirebaseUISignInSuccessWithAuthResult} from 'firebaseui-angular';
 import {FirebaseUISignInFailure} from 'firebaseui-angular';
-import { FirebaseUiService } from '../../services/firebase-ui.service';
 import { User } from '../../models/user';
 import { Router } from '@angular/router';
 
@@ -14,29 +13,10 @@ import { Router } from '@angular/router';
 export class LogInComponent implements OnInit {
   user: User;
 
-  constructor(private auth: FirebaseUiService, private fireAuth: AngularFireAuth, private router: Router) {
-    this.auth.userObservable.subscribe((user: User) => {
-      this.user = user;
-    });
+  constructor(private fireAuth: AngularFireAuth, private router: Router) {
   }
 
-  ngOnInit(): void {
-    // this.angularFireAuth.authState.subscribe(this.firebaseAuthChangeListener);
-  }
-
-  // private firebaseAuthChangeListener(response) {
-  //   // if needed, do a redirect in here
-  //   if (response) {
-  //     console.log('Logged in :)  chinna in');
-  //   } else {
-  //     console.log('Logged out :( chinna out');
-  //   }
-  // }
-
-  logout() {
-    this.fireAuth.auth.signOut();
-    this.user = undefined;
-  }
+  ngOnInit(): void {}
 
   successCallback(data: FirebaseUISignInSuccessWithAuthResult) {
     console.log('successCallback', data);

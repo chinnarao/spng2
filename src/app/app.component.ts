@@ -1,8 +1,6 @@
 import { Component, OnDestroy, ViewChild  } from '@angular/core';
 import {ObservableMedia, MediaChange} from '@angular/flex-layout';
 import {Subscription} from 'rxjs/Subscription';
-// import {filter} from 'rxjs/operators/filter';
-import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +14,7 @@ export class AppComponent implements OnDestroy {
 
   // @ViewChild('headerSearchBar') headerSearchBar;
 
-  constructor(media: ObservableMedia, user: UserService) {
+  constructor(media: ObservableMedia) {
     this.watcher = media.subscribe((change: MediaChange) => {
       this.activeMediaQuery = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : '';
       if ( change.mqAlias === Breakpoints.lg) {
@@ -24,7 +22,7 @@ export class AppComponent implements OnDestroy {
       }
     });
     // media.asObservable().pipe(filter((change: MediaChange) => change.mqAlias === 'xs')).subscribe(() => this.loadMobileContent() );
-    
+
   }
 
   loadMobileContent() { /* .... */ }

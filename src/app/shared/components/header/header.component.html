@@ -73,9 +73,6 @@
         <button mdc-button class="mdc-button-color-sp" (click)="signmenu.open = !signmenu.open">
           <mdc-icon>person</mdc-icon><mdc-icon>arrow_drop_down</mdc-icon>
         </button>
-        <!-- <button mdc-button class="mdc-button-color-sp" (click)="signmenu.open = !signmenu.open" *ngIf="isLoggedIn">
-            <mdc-icon>person</mdc-icon><mdc-icon>arrow_drop_down</mdc-icon>
-          </button> -->
         <mdc-menu #signmenu [anchor]="signanchor" anchorCorner="bottomStart">
           <mdc-list>
             <mdc-list-item [routerLink]="['/log-in']" *ngIf="!isLoggedIn">
