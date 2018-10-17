@@ -12,26 +12,8 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn = false;
   user: User;
-  // constructor(private afAuth: AngularFireAuth, public router: Router) {
-  //   // this.auth.userObservable.subscribe(this.firebaseAuthChangeListener);
-  //   this.afAuth.auth.onAuthStateChanged(function (user) {
-  //     if (user) {
-  //       this.user = new User(user);
-  //       user.getIdToken(true).then( (idToken) => {
-  //         this.user.user_idToken = idToken;
-  //         console.log(this.user);
-  //       });
-  //       router.navigate(['/']);
-  //       this.isLoggedIn = true;
-  //       console.log('chinna: ' + this.isLoggedIn);
-  //     } else {
-  //       this.isLoggedIn = false;
-  //     }
-  //   });
-  // }
 
   constructor(private afAuth: AngularFireAuth, public router: Router) {
-    // this.auth.userObservable.subscribe(this.firebaseAuthChangeListener);
     this.afAuth.auth.onAuthStateChanged( (user) => {
       if (user) {
         this.user = new User(user);
@@ -40,6 +22,7 @@ export class HeaderComponent implements OnInit {
           console.log(this.user);
         });
         router.navigate(['/']);
+        console.log('navigate to:', 'home' );
         this.isLoggedIn = true;
       } else {
         this.isLoggedIn = false;
@@ -47,20 +30,12 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  // private firebaseAuthChangeListener(user: User) {
-  //   this.user = user;
-  //     if (this.user && this.user.id) {
-  //       this.isLoggedIn = true;
-  //     } else {
-  //       this.isLoggedIn = false;
-  //     }
-  // }
-
   signOut() {
     this.afAuth.auth.signOut();
     this.user = undefined;
     this.isLoggedIn = false;
     this.router.navigate(['/']);
+    console.log('Sign out success, navigate to:', 'home' );
   }
 
   ngOnInit() {}

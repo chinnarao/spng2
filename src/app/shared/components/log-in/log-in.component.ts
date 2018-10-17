@@ -4,6 +4,7 @@ import {FirebaseUISignInSuccessWithAuthResult} from 'firebaseui-angular';
 import {FirebaseUISignInFailure} from 'firebaseui-angular';
 import { User } from '../../models/user';
 import { Router } from '@angular/router';
+import { UtilsService } from '../../helpers/utils.service';
 
 @Component({
   selector: 'app-log-in',
@@ -18,9 +19,8 @@ export class LogInComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  successCallback(data: FirebaseUISignInSuccessWithAuthResult) {
-    console.log('successCallback', data);
-    this.router.navigate(['/ad-list']);
+  successCallback(ev: FirebaseUISignInSuccessWithAuthResult) {
+    console.log('successCallback', ev);
   }
 
   errorCallback(data: FirebaseUISignInFailure) {

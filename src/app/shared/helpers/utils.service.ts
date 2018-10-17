@@ -12,9 +12,9 @@ export class UtilsService {
     if (window.location.host.includes('localhost')) {
       return 'http://localhost:4200';
     }
-
-    return 'https://arabeety-9cb39.firebaseapp.com';
+    return 'https://www.scooppages.com';
   }
+
 
 //   handleSignupErrors(errorCode: string) {
 //     switch (errorCode) {
