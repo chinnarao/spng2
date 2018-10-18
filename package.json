@@ -14,7 +14,7 @@
     "@angular-mdc/theme": "^0.40.1",
     "@angular-mdc/web": "^0.40.1",
     "@angular/animations": "^6.1.9",
-    "@angular/cdk": "^6.4.6",
+    "@angular/cdk": "^6.4.7",
     "@angular/common": "^6.1.9",
     "@angular/compiler": "^6.1.9",
     "@angular/core": "^6.1.9",
@@ -31,6 +31,7 @@
     "firebaseui": "^3.4.0",
     "firebaseui-angular": "^3.3.2",
     "ng-mat-search-bar": "^2.0.0-beta.1",
+    "ngx-store": "^2.0.0",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.3.3",
     "zone.js": "~0.8.26"

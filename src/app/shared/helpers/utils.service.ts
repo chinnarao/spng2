@@ -15,6 +15,10 @@ export class UtilsService {
     return 'https://www.scooppages.com';
   }
 
+  // not working
+  // public static isDefined<T>(value: T | undefined | null): value is T {
+  //   return <T>value !== undefined && <T>value !== null;
+  // }
 
 //   handleSignupErrors(errorCode: string) {
 //     switch (errorCode) {

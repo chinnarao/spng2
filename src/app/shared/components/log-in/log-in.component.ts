@@ -1,31 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
+import {Component} from '@angular/core';
 import {FirebaseUISignInSuccessWithAuthResult} from 'firebaseui-angular';
 import {FirebaseUISignInFailure} from 'firebaseui-angular';
-import { User } from '../../models/user';
-import { Router } from '@angular/router';
-import { UtilsService } from '../../helpers/utils.service';
 
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss']
 })
-export class LogInComponent implements OnInit {
-  user: User;
+export class LogInComponent {
 
-  constructor(private fireAuth: AngularFireAuth, private router: Router) {
-  }
+  constructor() {}
 
-  ngOnInit(): void {}
+  successCallback(ev: FirebaseUISignInSuccessWithAuthResult) {}
 
-  successCallback(ev: FirebaseUISignInSuccessWithAuthResult) {
-    console.log('successCallback', ev);
-  }
-
-  errorCallback(data: FirebaseUISignInFailure) {
-    console.warn('errorCallback', data);
-  }
-
+  errorCallback(ev: FirebaseUISignInFailure) {}
 }
 

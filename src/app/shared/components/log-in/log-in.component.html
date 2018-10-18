@@ -1,23 +1,8 @@
-<div fxLayout="column">
-    <div fxLayout="row" style="text-align:center;">
-      <nav fxFlex="15" fxFlexOrder.xs="2">
-        <div></div>
-      </nav>
-      <article fxFlex="70" fxFlexOrder.xs="1">
-        <div>
-          <H1>Log In</H1>
-        </div>
-      </article>
-      <aside fxFlex="15" fxFlexOrder.xs="3">
-        <div></div>
-      </aside>
-    </div>
-  </div>
-
+<div>
   <firebase-ui (signInSuccessWithAuthResult)="successCallback($event)" (signInFailure)="errorCallback($event)"></firebase-ui>
-
-<div style="margin-bottom:40px;" fxLayout fxLayoutAlign="center center">
-  <button class="cancel-button" [routerLink]="['/']" style="border:1px solid #dfdfdf;" mat-button>Cancel</button>
-  <button class="cancel-button" [routerLink]="['/ad-list']" style="border:1px solid #dfdfdf;" mat-button>Go to Advertisements</button>
-  <button class="cancel-button" [routerLink]="['/article-list']" style="border:1px solid #dfdfdf;" mat-button>Go to Articles</button>
+  <div style="margin-bottom:40px;" fxLayout fxLayoutAlign="center center">
+    <button class="cancel-button" [routerLink]="['/']" style="border:1px solid #dfdfdf;" mat-button>Go to Home</button>
+    <button class="cancel-button" [routerLink]="['/ad-list']" style="border:1px solid #dfdfdf;" mat-button>Go to Advertisements</button>
+    <button class="cancel-button" [routerLink]="['/article-list']" style="border:1px solid #dfdfdf;" mat-button>Go to Articles</button>
+  </div>
 </div>
