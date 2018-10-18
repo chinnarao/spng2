@@ -8,6 +8,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { SharedModule } from './shared/shared.module';
 import { MdcModule } from './shared/modules/mdc.module';  // this is not required but , app.component.html is using for some reason.
+import { FirebaseModule } from './shared/modules/firebase.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MdcModule } from './shared/modules/mdc.module';  // this is not require
     FormsModule, ReactiveFormsModule,
     HttpModule,
     SharedModule,
+    FirebaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
