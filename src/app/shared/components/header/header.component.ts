@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone  } from '@angular/core';
 import { User } from '../../models/user';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { SharedStorageService } from 'ngx-store';
+import 'zone.js/dist/zone-patch-rxjs';
 import { RoutingService } from '../../services/routing.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   user: User;
   routingService: any;
 
-  constructor(private afAuth: AngularFireAuth, private router: Router, private routingSvc: RoutingService) {
+  constructor(private afAuth: AngularFireAuth, private router: Router, private routingSvc: RoutingService, private ngZone: NgZone) {
     this.afAuth.auth.onAuthStateChanged( (user) => {
       if (user) {
         this.user = new User(user);
@@ -25,7 +25,8 @@ export class HeaderComponent implements OnInit {
           console.log(this.user);
         });
         const route_2 = this.routingSvc.getRouteHistoryUrls_2();
-        router.navigate([route_2]);
+        // warning: fix: Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'
+        this.ngZone.run(() => this.router.navigate([route_2]));
         this.isLoggedIn = true;
       } else {
         this.isLoggedIn = false;
