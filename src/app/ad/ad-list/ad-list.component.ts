@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-ad-list',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private logger: NGXLogger) {
+    this.logger.info('AdListComponent');
+  }
 
   ngOnInit() {
   }

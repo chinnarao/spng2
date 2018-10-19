@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FirebaseUISignInSuccessWithAuthResult} from 'firebaseui-angular';
 import {FirebaseUISignInFailure} from 'firebaseui-angular';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-log-in',
@@ -9,10 +10,16 @@ import {FirebaseUISignInFailure} from 'firebaseui-angular';
 })
 export class LogInComponent {
 
-  constructor() {}
+  constructor(private logger: NGXLogger) {
+    this.logger.info('LogInComponent');
+  }
 
-  successCallback(ev: FirebaseUISignInSuccessWithAuthResult) {}
+  successCallback(ev: FirebaseUISignInSuccessWithAuthResult) {
+    this.logger.info('LogInComponent: successCallback() : firebaseui login success');
+  }
 
-  errorCallback(ev: FirebaseUISignInFailure) {}
+  errorCallback(ev: FirebaseUISignInFailure) {
+    this.logger.error('LogInComponent: errorCallback() :', ev);
+  }
 }
 
