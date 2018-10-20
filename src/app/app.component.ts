@@ -17,7 +17,7 @@ export class AppComponent implements OnDestroy {
   // @ViewChild('headerSearchBar') headerSearchBar;
 
   constructor(media: ObservableMedia, routingService: RoutingService, private logger: NGXLogger) {
-    // throw new Error('Hello World, Error Message from scooppages');
+    throw new Error('Hello World, Error Message from scooppages');
     // -------------------------------flex-layout media points--------------------------------
     this.watcher = media.subscribe((change: MediaChange) => {
       this.activeMediaQuery = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : '';

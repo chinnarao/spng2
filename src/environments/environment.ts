@@ -4,6 +4,7 @@
 
 export const environment = {
     production: false,
+    serverURL: 'http://localhost:8080',
     firebaseConfig: {
         apiKey: 'AIzaSyAYt2q8UGS0SpvcfNUCqE8QIfuVAi2xQB0',
         authDomain: 'scooppagesdev1.firebaseapp.com',
