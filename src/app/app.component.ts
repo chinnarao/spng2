@@ -17,19 +17,19 @@ export class AppComponent implements OnDestroy {
   // @ViewChild('headerSearchBar') headerSearchBar;
 
   constructor(media: ObservableMedia, routingService: RoutingService, private logger: NGXLogger) {
-    throw new Error('Hello World, Error Message from scooppages');
-    // -------------------------------flex-layout media points--------------------------------
+    // throw new Error('Hello World, Error Message from scooppages');
+    // flex-layout media points
     this.watcher = media.subscribe((change: MediaChange) => {
       this.activeMediaQuery = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : '';
       if ( change.mqAlias === Breakpoints.lg) {
          this.loadMobileContent();
       }
+      logger.info(change.mqAlias);
+      logger.info(change.mediaQuery);
     });
     // media.asObservable().pipe(filter((change: MediaChange) => change.mqAlias === 'xs')).subscribe(() => this.loadMobileContent() );
-    // -------------------------------flex-layout media points--------------------------------
-    // -------------------------------routes history--------------------------------
+    // store routes history
     routingService.loadRouting();
-    // -------------------------------routes history--------------------------------
     this.logger.info('AppComponent');
   }
 
