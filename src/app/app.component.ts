@@ -1,8 +1,8 @@
 import { Component, OnDestroy, ViewChild  } from '@angular/core';
 import {ObservableMedia, MediaChange} from '@angular/flex-layout';
 import {Subscription} from 'rxjs/Subscription';
-import { RoutingService } from './shared/services/routing.service';
 import { NGXLogger } from 'ngx-logger';
+import { MenuService } from './menu/menu.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,7 @@ export class AppComponent implements OnDestroy {
 
   // @ViewChild('headerSearchBar') headerSearchBar;
 
-  constructor(media: ObservableMedia, routingService: RoutingService, private logger: NGXLogger) {
+  constructor(media: ObservableMedia, menuService: MenuService, private logger: NGXLogger) {
     // throw new Error('Hello World, Error Message from scooppages');
     // flex-layout media points
     this.watcher = media.subscribe((change: MediaChange) => {
@@ -29,7 +29,7 @@ export class AppComponent implements OnDestroy {
     });
     // media.asObservable().pipe(filter((change: MediaChange) => change.mqAlias === 'xs')).subscribe(() => this.loadMobileContent() );
     // store routes history
-    routingService.loadRouting();
+    menuService.loadRouting();
     this.logger.info('AppComponent');
   }
 

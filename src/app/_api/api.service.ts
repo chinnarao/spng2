@@ -5,18 +5,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ApiService {
 
-    constructor(private http: HttpClient) {
-    }
+    constructor(private http: HttpClient) {}
 
     public getAll<T>(url: string): Observable<T> {
         return this.http.get<T>(url);
     }
-
-    // read(parentId: number, id: number): Observable<T> {
-    //     return this.httpClient
-    //       .get(`${this.url}/${this.parentEndpoint}/${parentId}/${this.endpoint}/${id}`)
-    //       .map((data: any) => this.serializer.fromJson(data) as T);
-    //   }
 
     public getQuery<T>(url: string, params): Observable<T> {
         return this.http.get<T>(url, {params});
@@ -33,11 +26,6 @@ export class ApiService {
     public delete<T>(url: string, id: number): Observable<T> {
         return this.http.delete<T>(url + id);
     }
-
-    // delete(parentId: number, id: number) {
-    //     return this.httpClient
-    //       .delete(`${this.url}/${this.parentEndpoint}/${parentId}/${this.endpoint}/${id}`);
-    //   }
 
     public update<T>(url: string, id: number, itemToUpdate: any): Observable<T> {
         return this.http.put<T>(url + id, itemToUpdate);

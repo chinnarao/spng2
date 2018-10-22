@@ -10,7 +10,6 @@ import { AdListComponent } from './ad-list/ad-list.component';
 import { AdNotFoundComponent } from './ad-not-found/ad-not-found.component';
 import { AdService } from '../_api/ad.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

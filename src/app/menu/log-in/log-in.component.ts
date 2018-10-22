@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FirebaseUISignInSuccessWithAuthResult} from 'firebaseui-angular';
 import {FirebaseUISignInFailure} from 'firebaseui-angular';
-import { NGXLogger } from 'ngx-logger';
+import {NGXLogger} from 'ngx-logger';
 
 @Component({
   selector: 'app-log-in',

@@ -4,7 +4,7 @@ import { filter } from 'rxjs/operators';
 
 // https://blog.hackages.io/our-solution-to-get-a-previous-route-with-angular-5-601c16621cf0
 @Injectable()
-export class RoutingService {
+export class MenuService {
   private history = [];
 
   constructor(private router: Router) {}
