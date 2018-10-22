@@ -1,10 +1,10 @@
 import { Component, OnInit, NgZone  } from '@angular/core';
-import { User } from '../../models/user';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import 'zone.js/dist/zone-patch-rxjs';
 import { RoutingService } from '../../services/routing.service';
 import { NGXLogger } from 'ngx-logger';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-header',

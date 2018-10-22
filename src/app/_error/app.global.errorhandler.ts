@@ -3,6 +3,8 @@ import * as StackTrace from 'stacktrace-js';
 import {ClientErrorService} from './clientError.service';
 import { environment } from 'src/environments/environment';
 
+// https://github.com/ralscha/blog/blob/master/ngerrorhandler/client/src/app/app.global.errorhandler.ts
+
 @Injectable()
 export class AppGlobalErrorhandler implements ErrorHandler {
 

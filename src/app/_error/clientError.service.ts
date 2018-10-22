@@ -1,6 +1,6 @@
 import {ClientError, ClientErrorDb} from './clientErrorDb';
 import {Injectable} from '@angular/core';
-
+// https://github.com/ralscha/blog/blob/master/ngerrorhandler/client/src/app/clientError.service.ts
 @Injectable({
   providedIn: 'root'
 })
