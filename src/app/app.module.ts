@@ -14,6 +14,9 @@ import {HttpClientModule } from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import {environment } from 'src/environments/environment';
 import {InMemoryDataService } from './_in-memory/in-memory-data.service';
+// import { AdModule } from './ad/ad.module';
+import { AdService } from './_api/ad.service';
+import { ApiService } from './_api/api.service';
 
 @NgModule({
   declarations: [
@@ -30,9 +33,9 @@ import {InMemoryDataService } from './_in-memory/in-memory-data.service';
     FirebaseModule,
     LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.INFO, serverLogLevel: NgxLoggerLevel.OFF}),
     HttpClientModule,
-    environment.production ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 100 }) : []
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
   ],
-  providers: [NGXLogger,
+  providers: [NGXLogger, AdService, ApiService,
     {provide: ErrorHandler, useClass: AppGlobalErrorhandler}
   ],
   bootstrap: [AppComponent]

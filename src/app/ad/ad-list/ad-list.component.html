@@ -22,6 +22,14 @@
     <article fxFlex="70" fxFlexOrder.xs="1">
       <div>
         <H1>Advertisements</H1>
+        <ul class="heroes">
+          <li *ngFor="let hero of heroes">
+            <a routerLink="delete/:{{hero.id}}">
+              <span class="badge">{{hero.id}}</span> {{hero.name}}
+              <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+            </a>
+          </li>
+        </ul>
       </div>
     </article>
     <aside fxFlex="15" fxFlexOrder.xs="3">

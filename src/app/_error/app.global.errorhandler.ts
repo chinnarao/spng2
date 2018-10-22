@@ -76,7 +76,7 @@ export class AppGlobalErrorhandler implements ErrorHandler {
           body = `[${errors}]`;
         }
 
-        const response = await fetch(`${environment.serverURL}/clientError`, {
+        const response = await fetch(`${environment.baseURL}/clientError`, {
           method: 'POST',
           body: body,
           headers: {
