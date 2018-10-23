@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from './http.service';
+import { HttpService } from '../_core/http.service';
 import { AdModel } from '../_models/ad.model';
 import { throwError, Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';

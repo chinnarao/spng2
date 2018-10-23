@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
-import { AdService } from 'src/app/_api/ad.service';
 import { Hero } from 'src/app/_in-memory/in-memory-data.service';
+import { AdService } from '../ad.service';
 
 @Component({
   selector: 'app-ad-list',

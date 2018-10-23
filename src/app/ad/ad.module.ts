@@ -1,4 +1,3 @@
-import {HttpService} from '../_api/http.service';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -9,7 +8,8 @@ import {AdUpdateComponent} from './ad-update/ad-update.component';
 import {AdDeleteComponent} from './ad-delete/ad-delete.component';
 import {AdListComponent} from './ad-list/ad-list.component';
 import {AdNotFoundComponent} from './ad-not-found/ad-not-found.component';
-import {AdService} from '../_api/ad.service';
+import { AdService } from './ad.service';
+import { HttpService } from '../_core/http.service';
 
 @NgModule({
   imports: [
