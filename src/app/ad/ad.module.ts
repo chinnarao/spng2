@@ -1,3 +1,4 @@
+import { ApiService } from './../_api/api.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -17,6 +18,6 @@ import { AdService } from '../_api/ad.service';
     FlexLayoutModule,
   ],
   declarations: [AdCreateComponent, AdReadComponent, AdUpdateComponent, AdDeleteComponent, AdListComponent, AdNotFoundComponent],
-  providers: [AdService],
+  providers: [AdService, ApiService],
 })
 export class AdModule { }
