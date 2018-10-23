@@ -13,6 +13,7 @@ import {InMemoryDataService } from './_in-memory/in-memory-data.service';
 import { MenuMdcModule } from './menu/menu.mdc.module'; // this is not required but , app.component.html is using for some reason.
 import { MenuModule } from './menu/menu.module';
 import { AdModule } from './ad/ad.module';
+import { ArticleModule } from './article/article.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { AdModule } from './ad/ad.module';
     MenuMdcModule, MenuModule,
     LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.INFO, serverLogLevel: NgxLoggerLevel.OFF}),
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
-    SharedModule, AdModule
+    SharedModule, AdModule, ArticleModule
   ],
   providers: [NGXLogger,
     {provide: ErrorHandler, useClass: AppGlobalErrorhandler}
