@@ -7,6 +7,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { HomeComponent } from './components/home/home.component';
     HomeComponent,
     SpinnerComponent,
     NotFoundComponent,
+    ErrorComponent,
   ],
   exports: [
     FooterComponent,

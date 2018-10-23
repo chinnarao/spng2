@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
+import { HttpService } from './http.service';
 import { AdModel } from '../_models/ad.model';
 import { throwError, Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class AdService {
   private heroesUrl = 'api/heroes';
 
-  constructor(private http: HttpClient, private dataService: ApiService) {}
+  constructor(private http: HttpClient, private dataService: HttpService) {}
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
