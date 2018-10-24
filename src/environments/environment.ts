@@ -5,6 +5,7 @@
 export const environment = {
     production: false,
     baseURL: 'http://localhost:4200',
+    apiUrl: 'http://localhost:50128', // this is dotnet api url for web api
     firebaseConfig: {
         apiKey: 'AIzaSyAYt2q8UGS0SpvcfNUCqE8QIfuVAi2xQB0',
         authDomain: 'scooppagesdev1.firebaseapp.com',

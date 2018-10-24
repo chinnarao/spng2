@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from '../_core/http.service';
-import { AdModel } from '../_models/ad.model';
-import { throwError, Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { Issue, Hero } from '../_in-memory/in-memory-data.service';
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-
+import { CustomHttpClient } from '../_core/custom-http-client';
+import { Observable, of } from 'rxjs';
+import { NGXLogger } from 'ngx-logger';
+import { HttpHeaders } from '@angular/common/http';
+import { AdModel } from '../_models/ad.model';
 
 @Injectable()
 export class AdService {
-  private heroesUrl = 'api/heroes';
 
-  constructor(private http: HttpClient, private dataService: HttpService) {}
+  constructor(private logger: NGXLogger, private http: CustomHttpClient) {}
 
-  getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
+  getAds(): Observable<AdModel[]> {
+    return this.http.get<AdModel[]>('api/ads')
       .pipe(
-        tap(heroes => console.log('fetched heroes')),
-        catchError(this.handleError('getHeroes', []))
-      );
+        tap(heroes => console.log('fetched ads success')),
+        catchError(this.handleError('getHeroes', [])
+      )
+    );
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

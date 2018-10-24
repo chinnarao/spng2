@@ -7,10 +7,9 @@
       <div>
         <H1>Advertisements</H1>
         <ul class="heroes">
-          <li *ngFor="let hero of heroes">
-            <a routerLink="delete/:{{hero.id}}">
-              <span class="badge">{{hero.id}}</span> {{hero.name}}
-              <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+          <li *ngFor="let ad of ads">
+            <a routerLink="/">
+              <span class="badge">{{ad.adId}}</span> {{ad.adTitle}}
             </a>
           </li>
         </ul>

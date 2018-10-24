@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
-import { Hero } from 'src/app/_in-memory/in-memory-data.service';
 import { AdService } from '../ad.service';
+import { AdModel } from 'src/app/_models/ad.model';
 
 @Component({
   selector: 'app-ad-list',
@@ -9,17 +9,16 @@ import { AdService } from '../ad.service';
   styleUrls: ['./ad-list.component.scss']
 })
 export class AdListComponent implements OnInit {
-
-  heroes: Hero[];
+  ads: AdModel[];
   constructor(private logger: NGXLogger, private adService: AdService) {
     this.logger.info('AdListComponent');
   }
 
   ngOnInit() {
-    this.getHeroes();
+    this.getAds();
   }
 
-  getHeroes(): void {
-    this.adService.getHeroes().subscribe(heroes => this.heroes = heroes);
+  getAds(): void {
+    this.adService.getAds().subscribe(ads => this.ads = ads);
   }
 }

@@ -9,7 +9,6 @@ import {AdDeleteComponent} from './ad-delete/ad-delete.component';
 import {AdListComponent} from './ad-list/ad-list.component';
 import {AdNotFoundComponent} from './ad-not-found/ad-not-found.component';
 import { AdService } from './ad.service';
-import { HttpService } from '../_core/http.service';
 
 @NgModule({
   imports: [
@@ -18,6 +17,6 @@ import { HttpService } from '../_core/http.service';
     FlexLayoutModule,
   ],
   declarations: [AdCreateComponent, AdReadComponent, AdUpdateComponent, AdDeleteComponent, AdListComponent, AdNotFoundComponent],
-  providers: [AdService, HttpService],
+  providers: [AdService],
 })
 export class AdModule { }

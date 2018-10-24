@@ -1,3 +1,4 @@
+import { CoreModule } from './_core/core.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, ErrorHandler} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -12,8 +13,10 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './_in-memory/in-memory-data.service';
 import {MenuMdcModule} from './menu/menu.mdc.module'; // this is not required but , app.component.html is using for some reason.
 import {MenuModule} from './menu/menu.module';
-import {AdModule} from './ad/ad.module';
-import {ArticleModule} from './article/article.module';
+
+// export function getLocalStorage() {
+//   return (typeof window !== 'undefined') ? window.localStorage : null;
+// }
 
 @NgModule({
   declarations: [
@@ -24,10 +27,10 @@ import {ArticleModule} from './article/article.module';
     MenuMdcModule, MenuModule,
     LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.INFO, serverLogLevel: NgxLoggerLevel.OFF}),
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
-    SharedModule, AdModule, ArticleModule
+    SharedModule, CoreModule,
   ],
   providers: [NGXLogger,
-    {provide: ErrorHandler, useClass: AppGlobalErrorhandler}
+    {provide: ErrorHandler, useClass: AppGlobalErrorhandler},
   ],
   bootstrap: [AppComponent]
 })

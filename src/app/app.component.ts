@@ -31,6 +31,7 @@ export class AppComponent implements OnDestroy {
     // store routes history
     menuService.loadRouting();
     this.logger.info('AppComponent');
+    
   }
 
   loadMobileContent() { /* .... */ }

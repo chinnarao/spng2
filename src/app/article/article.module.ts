@@ -8,6 +8,7 @@ import { ArticleUpdateComponent } from './article-update/article-update.componen
 import { ArticleDeleteComponent } from './article-delete/article-delete.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleNotFoundComponent } from './article-not-found/article-not-found.component';
+import { ArticleService } from './article.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ArticleNotFoundComponent } from './article-not-found/article-not-found.
     FlexLayoutModule,
   ],
   declarations: [ArticleCreateComponent, ArticleReadComponent, ArticleUpdateComponent, ArticleDeleteComponent, ArticleListComponent,
-    ArticleNotFoundComponent]
+    ArticleNotFoundComponent],
+    providers: [ArticleService],
 })
 export class ArticleModule { }
