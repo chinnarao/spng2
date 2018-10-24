@@ -14,8 +14,6 @@ export class AppComponent implements OnDestroy {
   watcher: Subscription;
   activeMediaQuery = '';
 
-  // @ViewChild('headerSearchBar') headerSearchBar;
-
   constructor(media: ObservableMedia, menuService: MenuService, private logger: NGXLogger) {
     // throw new Error('Hello World, Error Message from scooppages');
     // flex-layout media points
@@ -31,7 +29,6 @@ export class AppComponent implements OnDestroy {
     // store routes history
     menuService.loadRouting();
     this.logger.info('AppComponent');
-    
   }
 
   loadMobileContent() { /* .... */ }

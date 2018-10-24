@@ -15,7 +15,7 @@ export class AdService {
     return this.http.get<AdModel[]>('api/ads')
       .pipe(
         tap(heroes => console.log('fetched ads success')),
-        catchError(this.handleError('getHeroes', [])
+        catchError(this.handleError('getAds', [])
       )
     );
   }
@@ -23,7 +23,7 @@ export class AdService {
   private handleError<T> (operation = 'operation', result?: T) {
     return(error: any): Observable<T> => {
       console.error(error);
-      console.log(`${operation} failed: ${error.message}`);
+      console.log(`${operation} failed: ${error}`);
       return of(result as T);
     };
   }

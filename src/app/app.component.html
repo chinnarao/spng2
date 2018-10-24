@@ -5,6 +5,10 @@
 </div>
 <div #mainContent style="min-height: 850px;">
   <hr>
+  <ngx-loading-bar [color]="'red'"></ngx-loading-bar>
   <router-outlet></router-outlet>
 </div>
-<footer style="height : 100px; background-color:white;"><div> <hr></div></footer>
+<footer style="height : 100px; background-color:white;"><div> <hr>
+    <button (click)="startLoading()">start</button>
+    <button (click)="stopLoading()">stop</button>
+</div></footer>

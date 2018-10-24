@@ -1,4 +1,4 @@
-import { CoreModule } from './_core/core.module';
+import {CoreModule} from './_core/core.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, ErrorHandler} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -13,10 +13,10 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './_in-memory/in-memory-data.service';
 import {MenuMdcModule} from './menu/menu.mdc.module'; // this is not required but , app.component.html is using for some reason.
 import {MenuModule} from './menu/menu.module';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
-// export function getLocalStorage() {
-//   return (typeof window !== 'undefined') ? window.localStorage : null;
-// }
+// pending 1. is browser localstorage not supported. 2. if internet offline
 
 @NgModule({
   declarations: [
@@ -27,6 +27,8 @@ import {MenuModule} from './menu/menu.module';
     MenuMdcModule, MenuModule,
     LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.INFO, serverLogLevel: NgxLoggerLevel.OFF}),
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
+    LoadingBarHttpClientModule,
+    LoadingBarRouterModule,
     SharedModule, CoreModule,
   ],
   providers: [NGXLogger,

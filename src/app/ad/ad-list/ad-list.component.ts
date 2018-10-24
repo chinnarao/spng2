@@ -19,6 +19,7 @@ export class AdListComponent implements OnInit {
   }
 
   getAds(): void {
-    this.adService.getAds().subscribe(ads => this.ads = ads);
+    // this.adService.getAds().subscribe(ads => { this.ads = ads; }, error => { console.log('rrrrrrrrrrrrrrr'); });
+    this.adService.getAds().subscribe(ads => { this.ads = ads; }, error => { console.log('rrrrrrrrrrrrrrr'); });
   }
 }
