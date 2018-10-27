@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 import { HttpHeaders } from '@angular/common/http';
 import { AdModel } from '../_models/ad.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AdService {
@@ -12,6 +13,9 @@ export class AdService {
   constructor(private logger: NGXLogger, private http: CustomHttpClient) {}
 
   getAds(): Observable<AdModel[]> {
+    const baseURL = environment.production ? 'https://localhost:44324/api/log' : '';
+    const url = 'https://localhost:44324/api/log' + 'api/ads';
+
     return this.http.get<AdModel[]>('api/ads')
       .pipe(
         tap(heroes => console.log('fetched ads success')),

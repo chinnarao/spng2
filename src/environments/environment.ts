@@ -4,8 +4,10 @@
 
 export const environment = {
     production: false,
-    baseURL: 'http://localhost:4200',
+    baseURL: 'http://localhost:4200', // angular application url
     apiUrl: 'http://localhost:50128', // this is dotnet api url for web api
+    apiLogURL: 'https://localhost:44324/api/log/log', // own log web api log url
+    apiErrorURL: 'https://localhost:44324/api/log/error', // own log web api error url
     firebaseConfig: {
         apiKey: 'AIzaSyAYt2q8UGS0SpvcfNUCqE8QIfuVAi2xQB0',
         authDomain: 'scooppagesdev1.firebaseapp.com',

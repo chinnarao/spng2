@@ -15,8 +15,9 @@ import {MenuMdcModule} from './menu/menu.mdc.module'; // this is not required bu
 import {MenuModule} from './menu/menu.module';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { environment } from 'src/environments/environment';
 
-// pending 1. is browser localstorage not supported. 2. if internet offline
+// pending 1. is browser localstorage not supported. 2. if internet offline 3. toaster 4. error interceptor 
 
 @NgModule({
   declarations: [
@@ -25,8 +26,8 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
   imports: [
     BrowserModule, AppRoutingModule, FlexLayoutModule, FormsModule, ReactiveFormsModule, HttpClientModule,
     MenuMdcModule, MenuModule,
-    LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.INFO, serverLogLevel: NgxLoggerLevel.OFF}),
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
+    LoggerModule.forRoot({serverLoggingUrl: environment.apiLogURL, level: NgxLoggerLevel.INFO, serverLogLevel: NgxLoggerLevel.TRACE}),
+    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
     SharedModule, CoreModule,
