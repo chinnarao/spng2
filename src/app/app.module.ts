@@ -16,25 +16,23 @@ import {MenuModule} from './menu/menu.module';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { environment } from 'src/environments/environment';
-
-// pending 1. is browser localstorage not supported. 2. if internet offline 3. toaster 4. error interceptor 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+// {timeOut: 5000, positionClass: 'top-right', preventDuplicates: true, closeButton: true, tapToDismiss: true, progressBar: true, newestOnTop: true }
+// pending 1. is browser localstorage not supported. 2. if internet offline 3. toaster 4. error interceptor
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [ AppComponent, ],
   imports: [
-    BrowserModule, AppRoutingModule, FlexLayoutModule, FormsModule, ReactiveFormsModule, HttpClientModule,
+    BrowserModule, AppRoutingModule, FlexLayoutModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule,
     MenuMdcModule, MenuModule,
     LoggerModule.forRoot({serverLoggingUrl: environment.apiLogglyLogURL, level: NgxLoggerLevel.INFO, serverLogLevel: NgxLoggerLevel.TRACE}),
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
-    LoadingBarHttpClientModule,
-    LoadingBarRouterModule,
+    LoadingBarHttpClientModule, LoadingBarRouterModule,
+    ToastrModule.forRoot({timeOut: 5000, preventDuplicates: true, closeButton: true, tapToDismiss: true, progressBar: true, newestOnTop: true }),
     SharedModule, CoreModule,
   ],
-  providers: [NGXLogger,
-    {provide: ErrorHandler, useClass: AppGlobalErrorhandler},
-  ],
+  providers: [NGXLogger, ToastrService, {provide: ErrorHandler, useClass: AppGlobalErrorhandler}, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,8 @@
-import { ErrorHandler, Injectable } from '@angular/core';
+import { ErrorHandler, Injectable, Inject, Injector } from '@angular/core';
 import * as StackTrace from 'stacktrace-js';
 import { ClientErrorService } from './clientError.service';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 // https://github.com/ralscha/blog/blob/master/ngerrorhandler/client/src/app/app.global.errorhandler.ts
 // https://github.com/loggly/loggly-castor
@@ -10,14 +11,16 @@ import { environment } from 'src/environments/environment';
 export class AppGlobalErrorhandler implements ErrorHandler {
     private isRetryRunning = false;
 
-    constructor(private readonly clientErrorService: ClientErrorService) {
+    constructor(private readonly clientErrorService: ClientErrorService, @Inject(Injector) private injector: Injector) {
         this.sendStoredErrors();
         window.addEventListener('online', () => this.sendStoredErrors());
     }
-
+    private get toastr(): ToastrService {
+        return this.injector.get(ToastrService);
+    }
     async handleError(error) {
         console.error(error);
-
+        this.toastr.error('An unexpected error has occurred.');
         const userAgent = {
             language: navigator.language,
             platform: navigator.platform,
@@ -86,6 +89,7 @@ export class AppGlobalErrorhandler implements ErrorHandler {
                     return true;
                 }
             } catch (error) {
+                this.toastr.error('Error logging failed!');
                 console.log('AppGlobalErrorhandler failed to send log report to api');
                 console.log(error);
             }

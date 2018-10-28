@@ -38,6 +38,7 @@
     "ng-mat-search-bar": "^2.0.0-beta.1",
     "ngx-logger": "^3.3.3",
     "ngx-store": "^2.0.0",
+    "ngx-toastr": "^9.1.1",
     "npm": "^6.4.1",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.3.3",
