@@ -8,6 +8,8 @@ export const environment = {
     apiUrl: 'http://localhost:50128', // this is dotnet api url for web api
     apiLogURL: 'https://localhost:44324/api/log/log', // own log web api log url
     apiErrorURL: 'https://localhost:44324/api/log/error', // own log web api error url
+    apiLogglyLogURL: 'http://logs-01.loggly.com/inputs/1cd084d9-e1f7-4a52-bf8f-ad639cfb24d1/tag/spnglog/',
+    apiLogglyErrorURL: 'http://logs-01.loggly.com/inputs/1cd084d9-e1f7-4a52-bf8f-ad639cfb24d1/tag/spngerror/',
     firebaseConfig: {
         apiKey: 'AIzaSyAYt2q8UGS0SpvcfNUCqE8QIfuVAi2xQB0',
         authDomain: 'scooppagesdev1.firebaseapp.com',
