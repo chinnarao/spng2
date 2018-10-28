@@ -26,7 +26,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     BrowserModule, AppRoutingModule, FlexLayoutModule, FormsModule, ReactiveFormsModule, HttpClientModule,
     MenuMdcModule, MenuModule,
-    LoggerModule.forRoot({serverLoggingUrl: environment.apiLogURL, level: NgxLoggerLevel.INFO, serverLogLevel: NgxLoggerLevel.TRACE}),
+    LoggerModule.forRoot({serverLoggingUrl: environment.apiLogglyLogURL, level: NgxLoggerLevel.INFO, serverLogLevel: NgxLoggerLevel.TRACE}),
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,

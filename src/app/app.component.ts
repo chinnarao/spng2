@@ -3,6 +3,7 @@ import {ObservableMedia, MediaChange} from '@angular/flex-layout';
 import {Subscription} from 'rxjs/Subscription';
 import { NGXLogger } from 'ngx-logger';
 import { MenuService } from './menu/menu.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,7 @@ export class AppComponent implements OnDestroy {
     // });
     // media.asObservable().pipe(filter((change: MediaChange) => change.mqAlias === 'xs')).subscribe(() => this.loadMobileContent() );
     // store routes history
+    this.logger.setCustomHttpHeaders(new HttpHeaders({'Content-Type': 'text/plain'}));
     menuService.loadRouting();
     this.logger.info('AppComponent');
   }

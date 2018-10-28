@@ -4,6 +4,7 @@ import { ClientErrorService } from './clientError.service';
 import { environment } from 'src/environments/environment';
 
 // https://github.com/ralscha/blog/blob/master/ngerrorhandler/client/src/app/app.global.errorhandler.ts
+// https://github.com/loggly/loggly-castor
 
 @Injectable()
 export class AppGlobalErrorhandler implements ErrorHandler {
@@ -73,14 +74,15 @@ export class AppGlobalErrorhandler implements ErrorHandler {
                     body = `[${errors}]`;
                 }
 
-                const response = await fetch(`${environment.apiErrorURL}`, {
+                const response = await fetch(`${environment.apiLogglyErrorURL}`, {
                     method: 'POST',
                     body: JSON.stringify(body),
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'text/plain',
                     },
                 });
                 if (response.ok) {
+                    console.log('AppGlobalErrorhandler success to send log report to loggly or web api');
                     return true;
                 }
             } catch (error) {
