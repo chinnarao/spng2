@@ -6,11 +6,16 @@ import { NGXLogger } from 'ngx-logger';
 import { HttpHeaders } from '@angular/common/http';
 import { AdModel } from '../_models/ad.model';
 import { environment } from 'src/environments/environment';
+import { HttpErrorHandler, HandleError } from '../_core/http-error-handler.service';
 
 @Injectable()
 export class AdService {
 
-  constructor(private logger: NGXLogger, private http: CustomHttpClient) {}
+  private handleError: HandleError;
+
+  constructor(private logger: NGXLogger, private http: CustomHttpClient, httpErrorHandler: HttpErrorHandler) {
+    this.handleError = httpErrorHandler.createHandleError('AdService');
+  }
 
   getAds(): Observable<AdModel[]> {
     const baseURL = environment.production ? 'https://localhost:44324/api/log' : '';
@@ -19,16 +24,20 @@ export class AdService {
     return this.http.get<AdModel[]>('api/ads')
       .pipe(
         tap(heroes => console.log('fetched ads success')),
-        catchError(this.handleError('getAds', [])
+        catchError(this.handleError<AdModel[]>('getAds', [])
       )
     );
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return(error: any): Observable<T> => {
-      console.error(error);
-      console.log(`${operation} failed: ${error}`);
-      return of(result as T);
-    };
+  getAllAds(): Observable<AdModel[]> {
+    const baseURL = environment.production ? 'https://localhost:44394/' : 'https://localhost:44394/';
+    const url = baseURL + 'api/ad/getallads';
+
+    return this.http.get<AdModel[]>(url)
+      .pipe(
+        tap(ads => {console.log('AdService:getallads:success'); console.log(ads); }),
+        catchError(this.handleError<AdModel[]>('getAllAds', [])
+      )
+    );
   }
 }

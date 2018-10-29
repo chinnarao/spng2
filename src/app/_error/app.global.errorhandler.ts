@@ -85,7 +85,7 @@ export class AppGlobalErrorhandler implements ErrorHandler {
                     },
                 });
                 if (response.ok) {
-                    console.log('AppGlobalErrorhandler success to send log report to loggly or web api');
+                    console.log('%cAppGlobalErrorhandler success to send log report to loggly or web api', 'color: green');
                     return true;
                 }
             } catch (error) {

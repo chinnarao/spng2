@@ -15,7 +15,6 @@ export class ArticleListComponent implements OnInit {
     ngOnInit() {}
 
     createError() {
-        // this.toastrService.error('Error logging failed!');
         throw new Error('error created by angular');
     }
 }

@@ -16,13 +16,13 @@ export class AdListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getAds();
-    this.testLog();
+    this.getAds();
+    //this.testLog();
   }
 
   getAds(): void {
     // this.adService.getAds().subscribe(ads => { this.ads = ads; }, error => { console.log('rrrrrrrrrrrrrrr'); });
-    this.adService.getAds().subscribe(ads => { this.ads = ads; }, error => { console.log('rrrrrrrrrrrrrrr'); });
+    this.adService.getAllAds().subscribe(ads => { this.ads = ads; }, error => { console.log('please check where i am?'); });
   }
 
   // tslint:disable-next-line:member-ordering
@@ -50,13 +50,8 @@ export class AdListComponent implements OnInit {
     };
 
     this.http1.post('https://localhost:44324/api/log/log1', JSON.stringify('this is test data'), httpOptions)
-      .subscribe(
-        res => {
-          console.log(res);
-        },
-        err => {
-          console.log(err);
-        }
-      );
+      .subscribe( res => {console.log(res); }, err => { console.log(err); } );
+
+      this.http1.get('https://localhost:44394/api/ad/getallads', httpOptions).subscribe(res => {console.log(res); }, err => {console.log(err); });
   }
 }

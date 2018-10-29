@@ -7,7 +7,9 @@
         "Loggly",
         "Scooppages",
         "biodata",
+        "getallads",
         "spcsad",
+        "stackframes",
         "toastr",
         "whitelisted"
     ]

@@ -18,8 +18,9 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { HttpErrorHandler } from './_core/http-error-handler.service';
 // {timeOut: 5000, positionClass: 'top-right', preventDuplicates: true, closeButton: true, tapToDismiss: true, progressBar: true, newestOnTop: true }
-// pending 1. is browser localstorage not supported. 2. if internet offline 3. toaster 4. error interceptor
+// pending 1. if browser localstorage not supported then what?. 2. if internet offline 3. error interceptor 4.analytics.service.ts
 
 @NgModule({
   declarations: [ AppComponent, ],
@@ -29,10 +30,10 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
     LoggerModule.forRoot({serverLoggingUrl: environment.apiLogglyLogURL, level: NgxLoggerLevel.INFO, serverLogLevel: NgxLoggerLevel.TRACE}),
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     LoadingBarHttpClientModule, LoadingBarRouterModule,
-    ToastrModule.forRoot({timeOut: 5000, preventDuplicates: true, closeButton: true, tapToDismiss: true, progressBar: true, newestOnTop: true }),
+    ToastrModule.forRoot({timeOut: 0, preventDuplicates: true, closeButton: true, tapToDismiss: true, progressBar: true, newestOnTop: true }), // positionClass: 'toast-bottom-full-width'
     SharedModule, CoreModule,
   ],
-  providers: [NGXLogger, ToastrService, {provide: ErrorHandler, useClass: AppGlobalErrorhandler}, ],
+  providers: [HttpErrorHandler, NGXLogger, ToastrService, {provide: ErrorHandler, useClass: AppGlobalErrorhandler}, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

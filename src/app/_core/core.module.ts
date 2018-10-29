@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { CustomHttpClient } from './custom-http-client';
+import { LoggingInterceptor } from './logging-interceptor';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { CustomHttpClient } from './custom-http-client';
     //   }
     // })
   ],
-  providers: [CustomHttpClient],
+  providers: [CustomHttpClient,
+    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }],
   declarations: []
 })
 export class CoreModule { }

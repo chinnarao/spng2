@@ -12,7 +12,7 @@ export class CustomHttpClient extends HttpClient {
     }
 
     get<T>(url: string): Observable<T> {
-        return super.get<T>(environment.apiUrl + '/' + url, { headers: this.getHeaders() });
+        return super.get<T>(url);
     }
 
     post<T>(url: string, body: any): Observable<T> {
