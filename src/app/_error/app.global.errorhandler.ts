@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AppGlobalErrorhandler implements ErrorHandler {
     private isRetryRunning = false;
 
-    constructor(private readonly clientErrorService: ClientErrorService, @Inject(Injector) private injector: Injector) {
+    constructor(private readonly clientErrorService: ClientErrorService, private injector: Injector) {
         this.sendStoredErrors();
         window.addEventListener('online', () => this.sendStoredErrors());
     }
@@ -91,7 +91,6 @@ export class AppGlobalErrorhandler implements ErrorHandler {
             } catch (error) {
                 this.toastr.error('Error logging failed!');
                 console.log('AppGlobalErrorhandler failed to send log report to api');
-                console.log(error);
             }
         }
 

@@ -1,4 +1,4 @@
-export interface AdModel {
+export class AdModel {
     adId:                                      string;
     adTitle:                                   string;
     adContent:                                 string;

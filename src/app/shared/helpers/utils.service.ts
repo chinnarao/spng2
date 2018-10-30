@@ -3,10 +3,12 @@
 // const bowser = require('bowser');
 
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class UtilsService {
-    constructor() {}
+    constructor(private toastrService: ToastrService) {}
 
     public static getBaseUrl() {
         if (window.location.host.includes('localhost')) {
@@ -107,5 +109,37 @@ export class UtilsService {
             message = 'O servidor ainda não suporta a funcionalidade ativada.';
         }
         return message;
+    }
+
+    private async sendErrorToServer(errors: string[] | string): Promise<boolean> {
+        if (navigator.onLine) {
+            try {
+                let body;
+                if (Array.isArray(errors)) {
+                    body = `[${errors.join(',')}]`;
+                } else {
+                    body = `[${errors}]`;
+                }
+
+                const response = await fetch(`${environment.apiLogglyErrorURL}`, {
+                    method: 'POST',
+                    body: JSON.stringify(body),
+                    headers: {
+                        'Content-Type': 'text/plain',
+                    },
+                });
+                if (response.ok) {
+                    console.log(
+                        '%cAppGlobalErrorhandler success to send log report to loggly or web api',
+                        'color: green'
+                    );
+                    return true;
+                }
+            } catch (error) {
+                this.toastrService.error('Error logging failed!');
+                console.log('AppGlobalErrorhandler failed to send log report to api');
+            }
+        }
+        return false;
     }
 }

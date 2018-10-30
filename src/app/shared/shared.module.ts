@@ -8,6 +8,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { UtilsService } from './helpers/utils.service';
 
 @NgModule({
   imports: [
@@ -29,6 +30,6 @@ import { ErrorComponent } from './pages/error/error.component';
     SpinnerComponent,
     NotFoundComponent,
   ],
-  providers: [],
+  providers: [UtilsService],
 })
 export class SharedModule { }

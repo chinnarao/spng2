@@ -3,55 +3,148 @@ import { NGXLogger } from 'ngx-logger';
 import { AdService } from '../ad.service';
 import { AdModel } from 'src/app/_models/ad.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-ad-list',
-  templateUrl: './ad-list.component.html',
-  styleUrls: ['./ad-list.component.scss']
+    selector: 'app-ad-list',
+    templateUrl: './ad-list.component.html',
+    styleUrls: ['./ad-list.component.scss'],
 })
 export class AdListComponent implements OnInit {
-  ads: AdModel[];
-  constructor(private logger: NGXLogger, private adService: AdService, private http1: HttpClient) {
-    this.logger.info('AdListComponent');
-  }
+    ads: AdModel[];
+    data: any;
+    oldData: any;
+    adModel: AdModel;
+    constructor(private logger: NGXLogger, private toastrService: ToastrService, private adService: AdService) {
+        this.logger.info('AdListComponent');
+    }
 
-  ngOnInit() {
-    this.getAds();
-    //this.testLog();
-  }
+    ngOnInit() {
+        // this.getAllAds();
+    }
+    // 636763840604300236
+    getAllAds(): void {
+        this.adService.getAllAds().subscribe(
+            ads => {
+                this.data = ads;
+            },
+            error => {
+                console.log('please check where i am1?');
+            }
+        );
+    }
 
-  getAds(): void {
-    // this.adService.getAds().subscribe(ads => { this.ads = ads; }, error => { console.log('rrrrrrrrrrrrrrr'); });
-    this.adService.getAllAds().subscribe(ads => { this.ads = ads; }, error => { console.log('please check where i am?'); });
-  }
+    getAdDetails(): void {
+        this.adService.getAdDetail('636763840604300236').subscribe(
+            ad => {
+                this.data = ad;
+            },
+            error => {
+                console.log('please check where i am2?');
+            }
+        );
+    }
 
-  // tslint:disable-next-line:member-ordering
-  books = [
-    { id: 1, name: 'Core Java' },
-    { id: 2, name: 'Angular 2' },
-    { id: 3, name: 'Hibernate' }
-  ];
+    createAd(): void {
+        this.adService.createAd(this.createAdModel()).subscribe(
+            ad => {
+                this.data = ad;
+                this.toastrService.success('Advertisement posted success, Thank you sir!');
+            },
+            error => {
+              this.toastrService.error('Failed to post advertisement, sorry sir!, Please try when you get a chance!');
+            }
+        );
+    }
 
-  testLog() {
-    // return this.http1.post('https://localhost:44324/api/log', 'error string by china angular project')
-    //               .toPromise()
-    //               .then((data) => {
-    //                 console.log(data);
-    //               });
-    // { id: 1, name: 'bar' }
-    // 'Content-Type':  'application/x-www-form-urlencoded'
-    // 'Content-Type':  'application/json'
-    // JSON.stringify({ id: 1, name: 'bar' })   // success
+    getAllUniqueTags(): void {
+        this.adService.getAllUniqueTags().subscribe(
+            ad => {
+                this.data = ad;
+            },
+            error => {
+                console.log('please check where i am4?');
+            }
+        );
+    }
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
+    updateAd(): void {
+        this.adService.updateAd(undefined).subscribe(
+            ad => {
+                this.data = ad;
+            },
+            error => {
+                console.log('please check where i am5?');
+            }
+        );
+    }
 
-    this.http1.post('https://localhost:44324/api/log/log1', JSON.stringify('this is test data'), httpOptions)
-      .subscribe( res => {console.log(res); }, err => { console.log(err); } );
+    searchAds(): void {
+        this.adService.updateAd(undefined).subscribe(
+            ad => {
+                this.data = ad;
+            },
+            error => {
+                console.log('please check where i am6?');
+            }
+        );
+    }
 
-      this.http1.get('https://localhost:44394/api/ad/getallads', httpOptions).subscribe(res => {console.log(res); }, err => {console.log(err); });
-  }
+    createAdModel(): any {
+        if (!this.adModel) {
+            this.adModel = new AdModel();
+        }
+        // this.adModel.adId = '636671112867386101';
+        this.adModel.adTitle = 'Ad 1';
+        this.adModel.adContent =
+            'Minim ex sint quis non officia quis excepteur. Nulla ex laborum veniam ex sint eathis.adModel.ad anim aliqua culpa reprehenderit et commodo cupidatat. Duis ea ea velit id aliquip sint laborum. Laboris do id elit dolore et sit consequat consequat exercitation dolor deserunt. Mollit mollit laboris aliquip fugiat sunt est amet fugiatthis.adModel.ad qui.';
+        this.adModel.adDisplayDays = 30;
+        this.adModel.userIdOrEmail = 'ad1email@live.com';
+        this.adModel.userPhoneNumber = '+1 (810) 425-3869';
+        this.adModel.userSocialAvatarUrl = 'http://placehold.it/200x200';
+        this.adModel.userLoggedInSocialProviderName = 'google';
+        this.adModel.addressStreet = '530 Hinsdale Street';
+        this.adModel.addressCity = 'Whitewater';
+        this.adModel.addressDistrictOrCounty = 'anonymous';
+        this.adModel.addressState = 'Northern Mariana Islands';
+        this.adModel.addressPartiesMeetingLandmarkName = 'Matthews Mcneil';
+        this.adModel.addressZipCode = '45785-5785';
+        this.adModel.addressCountryCode = 'sl';
+        this.adModel.addressCountryName = 'sri lanka';
+        this.adModel.addressLatitude = 85.98673;
+        this.adModel.addressLongitude = 97.124498;
+        this.adModel.itemCost = 1474.36;
+        this.adModel.itemCostCurrencyName = 'dollar';
+        this.adModel.itemCurrencyISO_4217 = 'USD';
+        this.adModel.attachedAssetsInCloudCount = 2;
+        this.adModel.attachedAssetsInCloudStorageId = '8b8174ed-dc5d-4433-b41d-175625bd363d';
+        this.adModel.attachedAssetsStoredInCloudBaseFolderPath = 'https://github.com/chinnarao';
+        // this.adModel.createdDateTime = '2018-10-22T06=06=52+00=00';
+        // this.adModel.updatedDateTime = '2018-10-22T06=06=52+00=00';
+        // this.adModel.isDeleted = true;
+        // this.adModel.deletedDateTime = '';
+        // this.adModel.isPublished = false;
+        // this.adModel.lastDraftOrBeforePublishedDateTime = '2018-10-22T06=06=52+00=00';
+        // this.adModel.lastPublishedDateTime = '2018-10-22T06=06=52+00=00';
+        // this.adModel.isActive = true;
+        // this.adModel.lastActiveDateTime = '';
+        // this.adModel.lastInActiveDateTime = '';
+        this.adModel.tag1 = 'do';
+        this.adModel.tag2 = 'amet';
+        this.adModel.tag3 = 'nulla';
+        this.adModel.tag4 = 'aute';
+        this.adModel.tag5 = 'sint';
+        this.adModel.tag6 = 'exercitation';
+        this.adModel.tag7 = 'adipisicing';
+        this.adModel.tag8 = 'irure';
+        this.adModel.tag9 = 'nostrud';
+        // this.adModel.updatedDateTimeString = '2018-10-22T06=06=52+00=00';
+        return this.adModel;
+    }
+
+    // testLog() {
+    //   const httpOptions = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
+    //   this.http1.post('https://localhost:44324/api/log/log1', JSON.stringify('data'), httpOptions).subscribe( res => {console.log(res); }, err => { console.log(err); } );
+    //   this.http1.get('https://localhost:44394/api/ad/getallads', httpOptions).subscribe(res => {console.log(res); }, err => {console.log(err); });
+    // }
 }
