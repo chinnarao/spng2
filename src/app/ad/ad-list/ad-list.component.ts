@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 import { AdService } from '../ad.service';
 import { AdModel } from 'src/app/_models/ad.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -20,13 +19,13 @@ export class AdListComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.getAllAds();
+        this.getAllAds();
     }
-    // 636763840604300236
+
     getAllAds(): void {
         this.adService.getAllAds().subscribe(
             ads => {
-                this.data = ads;
+                this.ads = ads;
             },
             error => {
                 console.log('please check where i am1?');
@@ -34,28 +33,8 @@ export class AdListComponent implements OnInit {
         );
     }
 
-    getAdDetails(): void {
-        this.adService.getAdDetail('636763840604300236').subscribe(
-            ad => {
-                this.data = ad;
-            },
-            error => {
-                console.log('please check where i am2?');
-            }
-        );
-    }
+    
 
-    createAd(): void {
-        this.adService.createAd(this.createAdModel()).subscribe(
-            ad => {
-                this.data = ad;
-                this.toastrService.success('Advertisement posted success, Thank you sir!');
-            },
-            error => {
-              this.toastrService.error('Failed to post advertisement, sorry sir!, Please try when you get a chance!');
-            }
-        );
-    }
 
     getAllUniqueTags(): void {
         this.adService.getAllUniqueTags().subscribe(
@@ -90,17 +69,17 @@ export class AdListComponent implements OnInit {
         );
     }
 
-    createAdModel(): any {
+    createAdModel(): AdModel {
         if (!this.adModel) {
             this.adModel = new AdModel();
         }
-        // this.adModel.adId = '636671112867386101';
+        this.adModel.adId = '636671112867386101';
         this.adModel.adTitle = 'Ad 1';
         this.adModel.adContent =
             'Minim ex sint quis non officia quis excepteur. Nulla ex laborum veniam ex sint eathis.adModel.ad anim aliqua culpa reprehenderit et commodo cupidatat. Duis ea ea velit id aliquip sint laborum. Laboris do id elit dolore et sit consequat consequat exercitation dolor deserunt. Mollit mollit laboris aliquip fugiat sunt est amet fugiatthis.adModel.ad qui.';
         this.adModel.adDisplayDays = 30;
         this.adModel.userIdOrEmail = 'ad1email@live.com';
-        this.adModel.userPhoneNumber = '+1 (810) 425-3869';
+        this.adModel.userPhoneNumber = '+18104253869';
         this.adModel.userSocialAvatarUrl = 'http://placehold.it/200x200';
         this.adModel.userLoggedInSocialProviderName = 'google';
         this.adModel.addressStreet = '530 Hinsdale Street';

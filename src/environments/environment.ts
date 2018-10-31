@@ -18,6 +18,11 @@ export const environment = {
         storageBucket: 'scooppagesdev1.appspot.com',
         messagingSenderId: '633429318654',
     },
+    googleMap : {
+        defaultLattitude: 34.153956,
+        defaultLongitude: -118.263307,
+        defaultZoomPercentage: 10
+    },
 };
 
 /*

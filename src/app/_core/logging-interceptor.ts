@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
 import { finalize, tap } from 'rxjs/operators';
-import { NGXLogger } from 'ngx-logger';
 
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {

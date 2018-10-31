@@ -30,7 +30,7 @@ export class AdService {
 
   createAd(ad: AdModel): Observable<AdModel> {
     const url = 'https://localhost:44394/api/ad/CreateAd';
-    console.log(ad);
+    // console.log(ad);
     return this.http.post<AdModel>(url, JSON.stringify(ad)).pipe(catchError(this.handleError<any>('createAd', [])));
   }
 

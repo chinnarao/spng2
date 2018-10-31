@@ -5,27 +5,12 @@
     </nav>
     <article fxFlex="70" fxFlexOrder.xs="1">
       <div>
-        <H1>Advertisements</H1>
-        <button (click)="getAllAds()">GetAllAds</button> <br>
-        <button (click)="getAdDetails()">GetAdDetail[636763840604300236]</button><br>
-        <button (click)="createAd()">CreateAd</button><br>
-        <button (click)="getAllUniqueTags()">getAllUniqueTags</button><br>
-        <button (click)="updateAd()" >updateAd[636763840604300236]</button><br>
-        <button (click)="searchAds()" >searchAds</button><br>
-        <pre>
-          {{oldData | json:2}}
-        </pre>
-        <pre>
-          {{data | json:2}}
-        </pre>
-        <!-- <ul class="heroes">
-          <li *ngFor="let ad of ads">
-            <a routerLink="/">
-              <span class="badge">{{ad.adId}}</span> {{ad.adTitle}}
-            </a>
-          </li>
-        </ul> -->
-
+        <div>
+            <div><H1>Displayed Advertisements Total: {{ads?.length}}</H1></div>
+            <div *ngFor="let ad of ads">
+                <a [routerLink]="['/ad-list/read/']" [queryParams]="{ id: ad.adId}">{{ad.adId}} - {{ad.adTitle}}</a>
+            </div>
+          </div>
       </div>
     </article>
     <aside fxFlex="15" fxFlexOrder.xs="3">

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 import { environment } from 'src/environments/environment';
 
@@ -34,7 +34,7 @@ export class HttpErrorHandler {
             this.sendErrorToServer(message);
             // Let the app keep running by returning a safe result.
             // return of(result);
-            return Observable.throw(error);
+            return throwError(error);
         };
     }
 
