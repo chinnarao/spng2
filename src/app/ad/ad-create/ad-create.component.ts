@@ -3,6 +3,7 @@ import { NGXLogger } from 'ngx-logger';
 import { AdModel } from 'src/app/_models/ad.model';
 import { ToastrService } from 'ngx-toastr';
 import { AdService } from '../ad.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-ad-create',
@@ -26,12 +27,18 @@ export class AdCreateComponent implements OnInit {
         ad => {
             this.toastrService.success('Advertisement posted success, Thank you sir!');
         },
-        error => {
-          this.errors = [];
-          error.error.forEach((obj, index) => {
-            this.errors.push(obj);
-          });
-          this.toastrService.error('Failed to post advertisement, My apology, Please try again when you get a chance!');
+        (err: HttpErrorResponse) => {
+          if (err.error.length === undefined) {
+            if (err.statusText === 'Unknown Error' || err.message === 'Http failure response for (unknown url): 0 Unknown Error') {
+              this.toastrService.info('Server Down!');
+            }
+          } else {
+            this.errors = [];
+            err.error.forEach((obj, i) => {
+              this.errors.push(obj);
+            });
+            this.toastrService.error('Failed to post advertisement, My apology, Please try again when you get a chance!');
+          }
         }
     );
   }

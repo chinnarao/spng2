@@ -1,4 +1,4 @@
-import { ErrorHandler, Injectable, Inject, Injector } from '@angular/core';
+import { ErrorHandler, Injectable, Injector } from '@angular/core';
 import * as StackTrace from 'stacktrace-js';
 import { ClientErrorService } from './clientError.service';
 import { environment } from 'src/environments/environment';
@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 // https://github.com/loggly/loggly-castor
 
 @Injectable()
-export class AppGlobalErrorhandler implements ErrorHandler {
+export class StackTraceOfflineErrorhandler implements ErrorHandler {
     private isRetryRunning = false;
 
     constructor(private readonly clientErrorService: ClientErrorService, private injector: Injector) {
@@ -85,12 +85,12 @@ export class AppGlobalErrorhandler implements ErrorHandler {
                     },
                 });
                 if (response.ok) {
-                    console.log('%cAppGlobalErrorhandler success to send log report to loggly or web api', 'color: green');
+                    console.log('%cLOGGLY!', 'color: green');
                     return true;
                 }
             } catch (error) {
-                this.toastr.error('Error logging failed!');
-                console.log('AppGlobalErrorhandler failed to send log report to api');
+                this.toastr.error('LOGGLY!');
+                console.log('%cLOGGLY!', 'color: red');
             }
         }
 

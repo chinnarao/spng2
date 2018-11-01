@@ -56,14 +56,11 @@ export class HttpErrorHandler {
                     },
                 });
                 if (response.ok) {
-                    console.log(
-                        '%cAppGlobalErrorhandler success to send log report to loggly!!',
-                        'color: green'
-                    );
+                    console.log('%cLOGGLY!!', 'color: green');
                     return true;
                 }
             } catch (error) {
-                this.nGXLogger.log('%cAppGlobalErrorhandler failed to send log report to api', 'color: red');
+                this.nGXLogger.log('%cLOGGLY-LOG!!', 'color: red');
             }
         }
         return false;

@@ -3,6 +3,7 @@ import { NGXLogger } from 'ngx-logger';
 import { AdService } from '../ad.service';
 import { AdModel } from 'src/app/_models/ad.model';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-ad-list',
@@ -27,13 +28,19 @@ export class AdListComponent implements OnInit {
             ads => {
                 this.ads = ads;
             },
-            error => {
-                console.log('please check where i am1?');
-            }
+            (err: HttpErrorResponse) => {
+                if (err.error.length === undefined) {
+                  if (err.statusText === 'Unknown Error' || err.message === 'Http failure response for (unknown url): 0 Unknown Error') {
+                    this.toastrService.info('Server Down!');
+                  }
+                } else {
+                  this.toastrService.error('Failed to get advertisement, My apology, Please try again when you get a chance!');
+                }
+              }
         );
     }
 
-    
+
 
 
     getAllUniqueTags(): void {

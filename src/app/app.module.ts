@@ -7,7 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {SharedModule} from './shared/shared.module';
 import {LoggerModule, NgxLoggerLevel, NGXLogger} from 'ngx-logger';
-import {AppGlobalErrorhandler} from './_error/app.global.errorhandler';
+import {StackTraceOfflineErrorhandler} from './_error/stackTraceOfflineErrorhandler';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './_in-memory/in-memory-data.service';
@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { HttpErrorHandler } from './_core/http-error-handler.service';
+import { SentryErrorHandler } from './_error/sentryErrorHandler';
 // {timeOut: 5000, positionClass: 'top-right', preventDuplicates: true, closeButton: true, tapToDismiss: true, progressBar: true, newestOnTop: true }
 // pending 1. if browser localstorage not supported then what?. 2. if internet offline 3. error interceptor 4.analytics.service.ts
 
@@ -33,7 +34,8 @@ import { HttpErrorHandler } from './_core/http-error-handler.service';
     ToastrModule.forRoot({timeOut: 0, preventDuplicates: true, closeButton: true, tapToDismiss: true, progressBar: true, newestOnTop: true }), // positionClass: 'toast-bottom-full-width'
     SharedModule, CoreModule,
   ],
-  providers: [HttpErrorHandler, NGXLogger, ToastrService, {provide: ErrorHandler, useClass: AppGlobalErrorhandler}, ],
+  providers: [HttpErrorHandler, NGXLogger, ToastrService, {provide: ErrorHandler, useClass: StackTraceOfflineErrorhandler},
+    { provide: ErrorHandler, useClass: SentryErrorHandler }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
