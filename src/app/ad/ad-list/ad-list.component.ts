@@ -26,8 +26,7 @@ export class AdListComponent implements OnInit {
     }
 
     ngOnInit() {
-        //this.getAllAds();
-        this.testGetMethod();
+        this.getAllAds();
     }
 
     getAllAds(): void {
@@ -150,17 +149,16 @@ export class AdListComponent implements OnInit {
         return this.adModel;
     }
 
-    testGetMethod() {
-        const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-        //this.http1.post('https://localhost:44324/api/log/log1', JSON.stringify('data'), httpOptions).subscribe( res => {console.log(res); }, err => { console.log(err); } );
-        this.http1.get('https://localhost:44394/api/ad/getallads').subscribe(
-            res => {
-                console.log(res);
-            },
-            err => {
-                console.log('12333333333');
-                console.log(err);
-            }
-        );
-    }
+    // testGetMethod() {
+    //     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    //     this.http1.get('https://localhost:44394/api/ad/getallads').subscribe(
+    //         res => {
+    //             console.log(res);
+    //         },
+    //         err => {
+    //             console.log('12333333333');
+    //             console.log(err);
+    //         }
+    //     );
+    // }
 }

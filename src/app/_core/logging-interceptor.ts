@@ -9,11 +9,7 @@ export class LoggingInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         const started = Date.now();
         let ok: string;
-        // if (req.url.indexOf('44394') >= 0) {
-        //     console.log(req.headers);
-        //     console.log(req.url);
-        // }
-        // extend server response observable with logging
+        // if (req.url.indexOf('44394') >= 0) { console.log(req.headers);console.log(req.url); }
         return next.handle(req).pipe(
             tap(
                 // Succeeds when there is a response; ignore other events
@@ -21,7 +17,6 @@ export class LoggingInterceptor implements HttpInterceptor {
                 // Operation failed; error is an HttpErrorResponse
                 error => (ok = 'failed')
             ),
-            // Log when response observable either completes or errors
             finalize(() => {
                 const elapsed = Date.now() - started;
                 const msg = `${req.method} "${req.urlWithParams}" ${ok} in ${elapsed} ms.`;
