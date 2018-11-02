@@ -15,7 +15,6 @@ export class AdCreateComponent implements OnInit {
   adModel: AdModel;
   private errors = [];
   constructor(private logger: NGXLogger, private toastrService: ToastrService, private adService: AdService) {
-    this.logger.info('AdCreateComponent');
   }
 
   ngOnInit() {
@@ -28,16 +27,32 @@ export class AdCreateComponent implements OnInit {
             this.toastrService.success('Advertisement posted success, Thank you sir!');
         },
         (err: HttpErrorResponse) => {
-          if (err.error.length === undefined) {
-            if (err.statusText === 'Unknown Error' || err.message === 'Http failure response for (unknown url): 0 Unknown Error') {
-              this.toastrService.info('Server Down!');
+          switch (err.status) {
+            case 0: {
+              if (err.statusText === 'Unknown Error' || err.message === 'Http failure response for (unknown url): 0 Unknown Error') {
+                this.toastrService.info('Server Down!');
+              }
+              break;
             }
-          } else {
-            this.errors = [];
-            err.error.forEach((obj, i) => {
-              this.errors.push(obj);
-            });
-            this.toastrService.error('Failed to post advertisement, My apology, Please try again when you get a chance!');
+            case 401: {
+                this.toastrService.error('Unauthorized, Please login and try again!');
+                break;
+            }
+            case 500: {
+                this.toastrService.error('unexpected error occurred, Please try later!');
+                break;
+            }
+            case 400: {
+              this.errors = [];
+              err.error.forEach((obj, i) => {
+                this.errors.push(obj);
+              });
+              break;
+            }
+            default: {
+              this.toastrService.error('Failed to post advertisement, My apology, Please try again when you get a chance!');
+              break;
+            }
           }
         }
     );
