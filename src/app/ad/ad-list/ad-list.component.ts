@@ -41,7 +41,7 @@ export class AdListComponent implements OnInit {
                     default: {
                         if (err.status !== 0) {
                             this.toastrService.error(
-                                'Failed to get advertisement, My apology, Please try again when you get a chance!'
+                                'Failed to get advertisements, My apology, Please try again when you get a chance!'
                             );
                         }
                         break;
