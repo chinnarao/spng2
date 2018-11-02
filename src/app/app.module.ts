@@ -20,8 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { HttpErrorHandler } from './_core/http-error-handler.service';
 import { SentryErrorHandler } from './_error/sentryErrorHandler';
-// {timeOut: 5000, positionClass: 'top-right', preventDuplicates: true, closeButton: true, tapToDismiss: true, progressBar: true, newestOnTop: true }
+
 // pending 1. if browser localstorage not supported then what?. 2. if internet offline 3. error interceptor 4.analytics.service.ts
+// offline: https://github.com/cyrilletuzi/ngx-pwa-offline
 
 @NgModule({
   declarations: [ AppComponent, ],

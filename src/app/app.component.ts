@@ -29,7 +29,6 @@ export class AppComponent implements OnDestroy {
     // store routes history
     this.logger.setCustomHttpHeaders(new HttpHeaders({'Content-Type': 'text/plain'}));
     menuService.loadRouting();
-    this.logger.info('AppComponent');
   }
 
   loadMobileContent() { /* .... */ }

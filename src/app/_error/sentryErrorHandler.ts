@@ -15,6 +15,7 @@ Sentry.init({
 export class SentryErrorHandler implements ErrorHandler {
     constructor() {}
     handleError(error) {
+        console.error(error.originalError || error);
         Sentry.captureException(error.originalError || error);
         console.log('%cSENTRY', 'color: green');
         throw error;

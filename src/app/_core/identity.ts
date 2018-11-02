@@ -6,13 +6,13 @@
 // export class Identity {
 //     id: string;
 //     email: string;
-//     access_token: string;
-//     setToken(access_token: string) {
-//         localStorage.setItem('access_token', access_token);
+//     token: string;
+//     setToken(token: string) {
+//         localStorage.setItem('token', token);
 //     }
 
 //     get(property: string) {
-//         const myRawToken = localStorage.getItem('access_token');
+//         const myRawToken = localStorage.getItem('token');
 
 //         if (myRawToken == null) {
 //             return undefined;
@@ -23,7 +23,7 @@
 //         switch (property) {
 //             case 'rawToken':
 //                 return myRawToken;
-//             case 'access_token':
+//             case 'token':
 //                 return myRawToken;
 //             case 'expirationDate':
 //                 return helper.getTokenExpirationDate(myRawToken);
@@ -35,6 +35,6 @@
 //     }
 
 //     invalidateToken() {
-//         localStorage.removeItem('access_token');
+//         localStorage.removeItem('token');
 //     }
 // }

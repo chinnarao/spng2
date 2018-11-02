@@ -31,3 +31,8 @@ export class User {
         this.providerData_photoURL = user.providerData[0].photoURL;
     }
 }
+
+export interface UserSession {
+    auth_token: string;
+    sessionTime: string;
+  }

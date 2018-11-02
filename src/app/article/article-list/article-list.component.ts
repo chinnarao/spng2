@@ -8,13 +8,9 @@ import { ToastrService } from 'ngx-toastr';
     styleUrls: ['./article-list.component.scss'],
 })
 export class ArticleListComponent implements OnInit {
-    constructor(private logger: NGXLogger, private toastrService: ToastrService) {
-        this.logger.info('ArticleListComponent');
-    }
+    constructor(private logger: NGXLogger, private toastrService: ToastrService) {}
 
     ngOnInit() {}
 
-    createError() {
-        throw new Error('error created by angular');
-    }
+    createError() {}
 }

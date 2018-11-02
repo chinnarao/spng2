@@ -22,7 +22,7 @@ export class AuthorizeGuard implements CanActivate, CanLoad {
     }
 
     private isAuthorized(route: Route | ActivatedRouteSnapshot): boolean {
-        const isAuthorized = localStorage.get('access_token') != null;
+        const isAuthorized = localStorage.get('token') !== 'null';
 
         if (!isAuthorized) {
             this._router.navigate(['/']);

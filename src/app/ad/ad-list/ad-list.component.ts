@@ -3,7 +3,7 @@ import { NGXLogger } from 'ngx-logger';
 import { AdService } from '../ad.service';
 import { AdModel } from 'src/app/_models/ad.model';
 import { ToastrService } from 'ngx-toastr';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
     selector: 'app-ad-list',
@@ -15,12 +15,19 @@ export class AdListComponent implements OnInit {
     data: any;
     oldData: any;
     adModel: AdModel;
-    constructor(private logger: NGXLogger, private toastrService: ToastrService, private adService: AdService) {
-        this.logger.info('AdListComponent');
+
+    constructor(
+        private logger: NGXLogger,
+        private toastrService: ToastrService,
+        private adService: AdService,
+        private http1: HttpClient
+    ) {
+
     }
 
     ngOnInit() {
-        this.getAllAds();
+        //this.getAllAds();
+        this.testGetMethod();
     }
 
     getAllAds(): void {
@@ -29,19 +36,34 @@ export class AdListComponent implements OnInit {
                 this.ads = ads;
             },
             (err: HttpErrorResponse) => {
-                if (err.error.length === undefined) {
-                  if (err.statusText === 'Unknown Error' || err.message === 'Http failure response for (unknown url): 0 Unknown Error') {
-                    this.toastrService.info('Server Down!');
-                  }
+                if (err.error && err.error.length === undefined) {
+                    if (
+                        err.statusText === 'Unknown Error' ||
+                        err.message === 'Http failure response for (unknown url): 0 Unknown Error'
+                    ) {
+                        this.toastrService.info('Server Down!');
+                    }
                 } else {
-                  this.toastrService.error('Failed to get advertisement, My apology, Please try again when you get a chance!');
+                    switch (err.status) {
+                        case 401: {
+                            this.toastrService.error('Unauthorized, Please login and try again!');
+                            break;
+                        }
+                        case 500: {
+                            this.toastrService.error('unexpected error occurred, Please try later!');
+                            break;
+                        }
+                        default: {
+                            this.toastrService.error(
+                                'Failed to get advertisement, My apology, Please try again when you get a chance!'
+                            );
+                            break;
+                        }
+                    }
                 }
-              }
+            }
         );
     }
-
-
-
 
     getAllUniqueTags(): void {
         this.adService.getAllUniqueTags().subscribe(
@@ -128,9 +150,17 @@ export class AdListComponent implements OnInit {
         return this.adModel;
     }
 
-    // testLog() {
-    //   const httpOptions = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
-    //   this.http1.post('https://localhost:44324/api/log/log1', JSON.stringify('data'), httpOptions).subscribe( res => {console.log(res); }, err => { console.log(err); } );
-    //   this.http1.get('https://localhost:44394/api/ad/getallads', httpOptions).subscribe(res => {console.log(res); }, err => {console.log(err); });
-    // }
+    testGetMethod() {
+        const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+        //this.http1.post('https://localhost:44324/api/log/log1', JSON.stringify('data'), httpOptions).subscribe( res => {console.log(res); }, err => { console.log(err); } );
+        this.http1.get('https://localhost:44394/api/ad/getallads').subscribe(
+            res => {
+                console.log(res);
+            },
+            err => {
+                console.log('12333333333');
+                console.log(err);
+            }
+        );
+    }
 }

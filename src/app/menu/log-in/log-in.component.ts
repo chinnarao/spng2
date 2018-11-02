@@ -11,11 +11,9 @@ import {NGXLogger} from 'ngx-logger';
 export class LogInComponent {
 
   constructor(private logger: NGXLogger) {
-    this.logger.info('LogInComponent');
   }
 
   successCallback(ev: FirebaseUISignInSuccessWithAuthResult) {
-    this.logger.info('LogInComponent: successCallback() : firebaseui login success');
   }
 
   errorCallback(ev: FirebaseUISignInFailure) {

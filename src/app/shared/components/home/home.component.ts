@@ -8,9 +8,7 @@ import { NGXLogger } from 'ngx-logger';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private logger: NGXLogger) {
-    this.logger.info('HomeComponent');
-  }
+  constructor(private logger: NGXLogger) {}
 
   ngOnInit() {
   }
