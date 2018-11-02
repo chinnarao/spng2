@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -10,7 +11,7 @@ export type HandleError = <T>(operation?: string, result?: T) => (error: HttpErr
 /** Handles HttpClient errors */
 @Injectable()
 export class HttpErrorHandler {
-    constructor(private nGXLogger: NGXLogger) {}
+    constructor(private nGXLogger: NGXLogger, private toastrService: ToastrService) {}
 
     /** Create curried handleError function that already knows the service name */
     createHandleError = (serviceName = '') => <T>(operation = 'operation', result = {} as T) =>
@@ -24,17 +25,39 @@ export class HttpErrorHandler {
      * @param result - optional value to return as the observable result
      */
     handleError<T>(serviceName = '', operation = 'operation', result = {} as T) {
-        return (error: HttpErrorResponse): Observable<T> => {
-            console.error(error);
+        return (err: HttpErrorResponse): Observable<T> => {
+            console.error(err);
             let message =
-                error.error instanceof ErrorEvent
-                    ? error.error.message
-                    : `server returned code ${error.status} with body "${error.error}"`;
+                err.error instanceof ErrorEvent
+                    ? err.error.message
+                    : `server returned code ${err.status} with body "${err.error}"`;
             message = `${serviceName}: ${operation} failed: ${message}`;
             this.sendErrorToServer(message);
             // Let the app keep running by returning a safe result.
             // return of(result);
-            return throwError(error);
+            switch (err.status) {
+                case 0: {
+                    if (
+                        err.statusText === 'Unknown Error' ||
+                        err.message === 'Http failure response for (unknown url): 0 Unknown Error'
+                    ) {
+                        this.toastrService.info('Server Down!');
+                    }
+                    break;
+                }
+                case 401: {
+                    this.toastrService.error('Unauthorized, Please login and try again!');
+                    break;
+                }
+                case 500: {
+                    this.toastrService.error('unexpected error occurred, Please try later!');
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+            return throwError(err);
         };
     }
 

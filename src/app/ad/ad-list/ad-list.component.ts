@@ -21,9 +21,7 @@ export class AdListComponent implements OnInit {
         private toastrService: ToastrService,
         private adService: AdService,
         private http1: HttpClient
-    ) {
-
-    }
+    ) {}
 
     ngOnInit() {
         this.getAllAds();
@@ -35,29 +33,18 @@ export class AdListComponent implements OnInit {
                 this.ads = ads;
             },
             (err: HttpErrorResponse) => {
-                if (err.error && err.error.length === undefined) {
-                    if (
-                        err.statusText === 'Unknown Error' ||
-                        err.message === 'Http failure response for (unknown url): 0 Unknown Error'
-                    ) {
-                        this.toastrService.info('Server Down!');
+                switch (err.status) {
+                    case 400: {
+                        this.toastrService.error('400');
+                        break;
                     }
-                } else {
-                    switch (err.status) {
-                        case 401: {
-                            this.toastrService.error('Unauthorized, Please login and try again!');
-                            break;
-                        }
-                        case 500: {
-                            this.toastrService.error('unexpected error occurred, Please try later!');
-                            break;
-                        }
-                        default: {
+                    default: {
+                        if (err.status !== 0) {
                             this.toastrService.error(
                                 'Failed to get advertisement, My apology, Please try again when you get a chance!'
                             );
-                            break;
                         }
+                        break;
                     }
                 }
             }

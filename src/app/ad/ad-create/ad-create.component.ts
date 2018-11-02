@@ -28,20 +28,6 @@ export class AdCreateComponent implements OnInit {
         },
         (err: HttpErrorResponse) => {
           switch (err.status) {
-            case 0: {
-              if (err.statusText === 'Unknown Error' || err.message === 'Http failure response for (unknown url): 0 Unknown Error') {
-                this.toastrService.info('Server Down!');
-              }
-              break;
-            }
-            case 401: {
-                this.toastrService.error('Unauthorized, Please login and try again!');
-                break;
-            }
-            case 500: {
-                this.toastrService.error('unexpected error occurred, Please try later!');
-                break;
-            }
             case 400: {
               this.errors = [];
               err.error.forEach((obj, i) => {
@@ -50,7 +36,9 @@ export class AdCreateComponent implements OnInit {
               break;
             }
             default: {
-              this.toastrService.error('Failed to post advertisement, My apology, Please try again when you get a chance!');
+              if (err.status !== 0) {
+                this.toastrService.error('Failed to post advertisement, My apology, Please try again when you get a chance!');
+              }
               break;
             }
           }
