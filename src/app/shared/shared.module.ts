@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { UtilsService } from './helpers/utils.service';
+import { MdcModule } from './modules/mdc.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { UtilsService } from './helpers/utils.service';
     RouterModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    MdcModule
   ],
   declarations: [
     FooterComponent,
@@ -29,6 +31,7 @@ import { UtilsService } from './helpers/utils.service';
     HomeComponent,
     SpinnerComponent,
     NotFoundComponent,
+    ErrorComponent,
   ],
   providers: [UtilsService],
 })

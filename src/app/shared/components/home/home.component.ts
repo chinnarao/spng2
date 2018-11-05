@@ -10,7 +10,16 @@ export class HomeComponent implements OnInit {
 
   constructor(private logger: NGXLogger) {}
 
+  showSearchBarMenu = false;
+
   ngOnInit() {
   }
 
+  showSearchBarClick(): void {
+    this.showSearchBarMenu = !this.showSearchBarMenu;
+  }
+
+  search(): void {
+    // some event emitter.
+  }
 }
