@@ -9,14 +9,19 @@ import {AdDeleteComponent} from './ad-delete/ad-delete.component';
 import {AdListComponent} from './ad-list/ad-list.component';
 import {AdNotFoundComponent} from './ad-not-found/ad-not-found.component';
 import { AdService } from './ad.service';
+import { AdSearchComponent } from './ad-search/ad-search.component';
+import { AdSearchCriteriaComponent } from './ad-search-criteria/ad-search-criteria.component';
+import { MaterialModule } from '../shared/modules/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AdRoutingModule,
     FlexLayoutModule,
+    MaterialModule,
   ],
-  declarations: [AdCreateComponent, AdReadComponent, AdUpdateComponent, AdDeleteComponent, AdListComponent, AdNotFoundComponent],
+  declarations: [AdCreateComponent, AdReadComponent, AdUpdateComponent, AdDeleteComponent, AdListComponent, AdNotFoundComponent, AdSearchComponent,
+    AdSearchCriteriaComponent],
   providers: [AdService],
 })
 export class AdModule { }
